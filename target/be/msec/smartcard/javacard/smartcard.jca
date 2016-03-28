@@ -1,0 +1,5945 @@
+// converted by version 1.3
+// on Mon Mar 28 17:08:10 CEST 2016
+
+.package be/msec/smartcard {
+	.aid 0x1:0x2:0x3:0x4:0x5:0x6:0x7:0x8:0x9:0x0;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.3;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.3;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.3;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.applet {
+		0x1:0x2:0x3:0x4:0x5:0x6:0x7:0x8:0x9:0x0:0x0 IdentityCard;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] IdentityCard/privExponent;
+		// 1
+		instanceFieldRef byte[] IdentityCard/privModulus;
+		// 2
+		instanceFieldRef byte[] IdentityCard/pubExponent;
+		// 3
+		instanceFieldRef byte[] IdentityCard/pubModulus;
+		// 4
+		instanceFieldRef byte[] IdentityCard/pubKeySC;
+		// 5
+		instanceFieldRef byte[] IdentityCard/privKeySC;
+		// 6
+		instanceFieldRef byte[] IdentityCard/pubExponentMW;
+		// 7
+		instanceFieldRef byte[] IdentityCard/pubModulusMW;
+		// 8
+		instanceFieldRef byte[] IdentityCard/serial;
+		// 9
+		instanceFieldRef byte[] IdentityCard/name;
+		// 10
+		instanceFieldRef short IdentityCard/offset;
+		// 11
+		instanceFieldRef 1.20 IdentityCard/sessionKey;
+		// 12
+		instanceFieldRef boolean IdentityCard/isMWauthenticated;
+		// 13
+		instanceFieldRef short IdentityCard/shopEntryOffset;
+		// 14
+		instanceFieldRef short IdentityCard/selectedShopEntryOffset;
+		// 15
+		instanceFieldRef short IdentityCard/numberOfLogs;
+		// 16
+		instanceFieldRef byte[] IdentityCard/logs;
+		// 17
+		instanceFieldRef 0.9 IdentityCard/pin;
+		// 18
+		instanceFieldRef 1.8 IdentityCard/privKey;
+		// 19
+		instanceFieldRef 1.9 IdentityCard/pubKeyMiddleware;
+		// 20
+		instanceFieldRef byte[] IdentityCard/selectedShopEntry;
+		// 21
+		instanceFieldRef byte[] IdentityCard/shopEntries;
+		// 22
+		instanceFieldRef byte[] IdentityCard/selectedPseudoCertificate;
+		// 23
+		instanceFieldRef byte IdentityCard/challengeP1;
+		// 24
+		instanceFieldRef byte IdentityCard/challengeP2;
+		// 25
+		instanceFieldRef byte[] IdentityCard/initChallenge;
+		// 26
+		instanceFieldRef byte[] IdentityCard/pseudonymTemp;
+		// 27
+		instanceFieldRef byte[] IdentityCard/certificateTemp;
+		// 28
+		instanceFieldRef byte[] IdentityCard/shopNameTemp;
+		// 29
+		instanceFieldRef byte[] IdentityCard/encryptedCertificateTemp;
+		// 30
+		virtualMethodRef 0.9.2()B;		// getTriesRemaining()B
+		// 31
+		virtualMethodRef 0.10.1()[B;		// getBuffer()[B
+		// 32
+		virtualMethodRef 0.3.3()Z;		// selectingApplet()Z
+		// 33
+		staticMethodRef 0.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 34
+		staticMethodRef IdentityCard/validatePIN(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 35
+		staticMethodRef IdentityCard/getSerial(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 36
+		staticMethodRef IdentityCard/getName(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 37
+		virtualMethodRef IdentityCard/challenge(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 38
+		staticMethodRef IdentityCard/encryptWithSessionKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 39
+		staticMethodRef IdentityCard/getPublicECCertificate(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 40
+		staticMethodRef IdentityCard/test(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 41
+		staticMethodRef IdentityCard/generateSessionKey(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 42
+		staticMethodRef IdentityCard/registerShopPseudonym(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 43
+		staticMethodRef IdentityCard/registerShopCertificate(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 44
+		staticMethodRef IdentityCard/registerShopName(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 45
+		staticMethodRef IdentityCard/registerShopComplete(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 46
+		staticMethodRef IdentityCard/challengeIsAccepted(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 47
+		staticMethodRef IdentityCard/getNextChallenge(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 48
+		staticMethodRef IdentityCard/getCurrentChallenge(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 49
+		staticMethodRef IdentityCard/getPseudonymCertificate(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 50
+		staticMethodRef IdentityCard/changeLP(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 51
+		staticMethodRef IdentityCard/shortToByteArray(S)[B;
+		// 52
+		staticMethodRef IdentityCard/sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 53
+		staticMethodRef IdentityCard/getNextLog(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 54
+		staticMethodRef IdentityCard/clearLogs(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 55
+		staticMethodRef IdentityCard/checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 56
+		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 57
+		staticMethodRef IdentityCard/encryptWithSessionKey([B)[B;
+		// 58
+		staticMethodRef IdentityCard/receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 59
+		staticMethodRef IdentityCard/decryptWithSessionKey([B)[B;
+		// 60
+		staticMethodRef IdentityCard/bytesToShort(BB)S;
+		// 61
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 62
+		virtualMethodRef 0.9.8([BSB)V;		// update([BSB)V
+		// 63
+		staticMethodRef IdentityCard/log([B[B[B)V;
+		// 64
+		staticMethodRef 1.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 65
+		staticMethodRef IdentityCard/selectShopEntry([B)Z;
+		// 66
+		staticMethodRef IdentityCard/encryptWithSessionKey512([B)[B;
+		// 67
+		staticMethodRef IdentityCard/receiveBytes(Ljavacard/framework/APDU;)[B;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 68
+		virtualMethodRef 0.10.7()S;		// setOutgoing()S
+		// 69
+		virtualMethodRef 0.10.9(S)V;		// setOutgoingLength(S)V
+		// 70
+		virtualMethodRef 0.10.5([BSS)V;		// sendBytesLong([BSS)V
+		// 71
+		staticMethodRef IdentityCard/removeNullBytes([B)[B;
+		// 72
+		staticMethodRef 0.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 73
+		virtualMethodRef 0.9.4()Z;		// isValidated()Z
+		// 74
+		staticMethodRef IdentityCard/SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 75
+		classRef 1.8;		// javacard/security/RSAPrivateKey
+		// 76
+		classRef 0.9;		// javacard/framework/OwnerPIN
+		// 77
+		staticMethodRef IdentityCard/sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 78
+		staticMethodRef IdentityCard/getRandomByteArray(S)[B;
+		// 79
+		classRef 1.9;		// javacard/security/RSAPublicKey
+		// 80
+		virtualMethodRef 0.9.5()V;		// reset()V
+		// 81
+		staticMethodRef IdentityCard/receiveBytesEncryptedByMW(Ljavacard/framework/APDU;)[B;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 82
+		virtualMethodRef 0.9.1([BSB)Z;		// check([BSB)Z
+		// 83
+		staticFieldRef byte[] IdentityCard/pubECKeyCertificate;
+		// 84
+		staticMethodRef IdentityCard/getSessionKey([B)[B;
+		// 85
+		classRef 1.20;		// javacard/security/AESKey
+		// 86
+		staticMethodRef 1.22.0(BZ)Ljavacard/security/KeyAgreement;;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+			.descriptor	Ljavacard/security/KeyAgreement;	1.22;
+
+		// 87
+		staticMethodRef IdentityCard/getCommonKeyPrivate()Ljavacard/security/ECPrivateKey;;
+			.descriptor	Ljavacard/security/ECPrivateKey;	1.18;
+
+		// 88
+		virtualMethodRef 1.22.1(Ljavacard/security/PrivateKey;)V;		// init(Ljavacard/security/PrivateKey;)V
+			.descriptor	Ljavacard/security/PrivateKey;	1.2;
+
+		// 89
+		virtualMethodRef 1.22.3([BSS[BS)S;		// generateSecret([BSS[BS)S
+		// 90
+		staticMethodRef 0.16.5(BB)S;		// javacard/framework/Util.makeShort(BB)S
+		// 91
+		staticMethodRef 0.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 92
+		staticFieldRef byte[] IdentityCard/a;
+		// 93
+		classRef 1.17;		// javacard/security/ECKey
+		// 94
+		staticFieldRef byte[] IdentityCard/b;
+		// 95
+		staticFieldRef byte[] IdentityCard/n;
+		// 96
+		staticFieldRef byte[] IdentityCard/G;
+		// 97
+		staticFieldRef byte[] IdentityCard/p;
+		// 98
+		classRef 1.19;		// javacard/security/ECPublicKey
+		// 99
+		staticMethodRef IdentityCard/setDomainParameters(Ljavacard/security/ECKey;)V;
+			.descriptor	Ljavacard/security/ECKey;	1.17;
+
+		// 100
+		staticFieldRef byte[] IdentityCard/wCom;
+		// 101
+		classRef 1.18;		// javacard/security/ECPrivateKey
+		// 102
+		staticFieldRef byte[] IdentityCard/privECKey;
+		// 103
+		staticMethodRef 2.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	2.1;
+
+		// 104
+		virtualMethodRef 2.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 105
+		virtualMethodRef 2.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 106
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		// 107
+		virtualMethodRef 0.10.15()S;		// getIncomingLength()S
+		// 108
+		staticMethodRef IdentityCard/clearChallenges()V;
+		// 109
+		staticMethodRef IdentityCard/checkChallenge(Ljavacard/framework/APDU;)[B;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+		// 110
+		staticMethodRef 0.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 111
+		virtualMethodRef 0.3.1()V;		// register()V
+		// 112
+		classRef IdentityCard;
+		// 113
+		staticMethodRef IdentityCard/<init>()V;
+		// 114
+		staticMethodRef 1.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	1.14;
+
+		// 115
+		virtualMethodRef 1.14.1([BSS)V;		// generateData([BSS)V
+	}
+
+	.class public IdentityCard 0 extends 0.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private byte[] selectedShopEntry 0;		// [B
+			 byte[] privExponent 1;		// [B
+			 byte[] privModulus 2;		// [B
+			 byte[] pubExponent 3;		// [B
+			 byte[] pubModulus 4;		// [B
+			 byte[] pubKeySC 5;		// [B
+			 byte[] privKeySC 6;		// [B
+			 byte[] pubExponentMW 7;		// [B
+			 byte[] pubModulusMW 8;		// [B
+			private 1.9 pubKeyMiddleware 9;		// Ljavacard/security/RSAPublicKey;
+			private byte[] serial 10;		// [B
+			private byte[] name 11;		// [B
+			private 0.9 pin 12;		// Ljavacard/framework/OwnerPIN;
+			private 1.8 privKey 13;		// Ljavacard/security/RSAPrivateKey;
+			private 1.20 sessionKey 14;		// Ljavacard/security/AESKey;
+			private byte[] initChallenge 15;		// [B
+			private byte[] shopEntries 16;		// [B
+			private byte[] selectedPseudoCertificate 17;		// [B
+			 byte[] pseudonymTemp 18;		// [B
+			 byte[] certificateTemp 19;		// [B
+			 byte[] shopNameTemp 20;		// [B
+			private byte[] encryptedCertificateTemp 21;		// [B
+			private byte[] logs 22;		// [B
+			private short offset 23;		// S
+			private boolean isMWauthenticated 24;		// Z
+			private byte challengeP1 25;		// B
+			private byte challengeP2 26;		// B
+			private short shopEntryOffset 27;		// S
+			private short selectedShopEntryOffset 28;		// S
+			private short numberOfLogs 29;		// S
+			public static final byte GET_CURRENT_CHALLENGE = 71;		// B
+			public static final byte REGISTER_SHOP_CERTIFICATE_PART1 = 72;		// B
+			public static final byte REGISTER_SHOP_CERTIFICATE_PART2 = 73;		// B
+			public static final byte REGISTER_SHOP_CERTIFICATE_PART3 = 80;		// B
+			public static final byte GET_PSEUDONYM_CERTIFICATE_PART1 = 81;		// B
+			public static final byte GET_PSEUDONYM_CERTIFICATE_PART2 = 82;		// B
+			public static final byte GET_PSEUDONYM_CERTIFICATE_PART3 = 83;		// B
+			public static final byte SELECT_SHOP = 84;		// B
+			public static final byte CHANGE_LP = 85;		// B
+			public static final byte GET_NUMBER_OF_LOGS = 86;		// B
+			public static final byte GET_NEXT_LOG = 87;		// B
+			public static final byte CLEAR_LOGS = 88;		// B
+			private static final byte IDENTITY_CARD_CLA = -128;		// B
+			private static final byte VALIDATE_PIN_INS = 34;		// B
+			private static final short SW_VERIFICATION_FAILED = 25344;		// S
+			private static final short SW_PIN_VERIFICATION_REQUIRED = 25345;		// S
+			private static final short SW_TEST = 25346;		// S
+			private static final short MW_MUST_BE_AUTHENTICATED = 25599;		// S
+			private static final short CHALLENGE_NOT_ACCEPTED = 25598;		// S
+			private static final short NO_SHOP_FOUND = 25597;		// S
+			private static final byte GET_SERIAL_INS = 36;		// B
+			private static final byte GET_NAME_INS = 38;		// B
+			private static final byte CHALLENGE_INS = 40;		// B
+			private static final byte GET_CERTIFICATE_INS = 48;		// B
+			private static final byte GET_CERTIFICATE_SIZE_INS = 50;		// B
+			private static final byte GET_EC_CERTIFICATE = 52;		// B
+			private static final byte CLEAR_OFFSET_INS = 53;		// B
+			private static final byte GENERATE_SESSION_KEY = 54;		// B
+			private static final byte PIN_TRY_LIMIT = 3;		// B
+			private static final byte PIN_SIZE = 4;		// B
+			private static final byte ENCRYPT_BYTES_WITH_SESSION_KEY = 55;		// B
+			private static final byte REGISTER_SHOP_PSEUDONYM = 56;		// B
+			private static final byte REGISTER_SHOP_CERTIFICATE = 57;		// B
+			private static final byte REGISTER_SHOP_NAME = 64;		// B
+			private static final byte REGISTER_SHOP_COMPLETE = 65;		// B
+			private static final byte CLOSE_SECURE_CONNECTION = 66;		// B
+			private static final byte INIT_CHALLENGE = 68;		// B
+			private static final byte CHALLENGE_ACCEPTED = 69;		// B
+			private static final byte GET_NEXT_CHALLENGE = 70;		// B
+			private static final byte TEST = 67;		// B
+			private static final short numBytesToRead = 0;		// S
+			private static final short certificateLen = 413;		// S
+			private static final short pseudonymLen = 26;		// S
+			private static byte[] pubECKeyCertificate = {48,-126,2,71,48,-126,1,47,2,4,-81,-86,-15,94,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,48,83,49,19,48,17,6,3,85,4,3,12,10,119,119,119,46,76,67,80,46,98,101,49,17,48,15,6,3,85,4,10,12,8,75,85,76,101,117,118,101,110,49,13,48,11,6,3,85,4,7,12,4,71,101,110,116,49,13,48,11,6,3,85,4,8,12,4,79,45,86,108,49,11,48,9,6,3,85,4,6,19,2,66,69,48,30,23,13,49,54,48,51,50,49,48,56,53,53,52,55,90,23,13,49,54,48,54,50,57,48,56,53,53,52,55,90,48,88,49,24,48,22,6,3,85,4,3,12,15,119,119,119,46,74,97,118,97,99,97,114,100,46,98,101,49,17,48,15,6,3,85,4,10,12,8,75,85,76,101,117,118,101,110,49,13,48,11,6,3,85,4,7,12,4,71,101,110,116,49,13,48,11,6,3,85,4,8,12,4,79,45,86,108,49,11,48,9,6,3,85,4,6,19,2,66,69,48,73,48,19,6,7,42,-122,72,-50,61,2,1,6,8,42,-122,72,-50,61,3,1,1,3,50,0,4,-5,-2,-76,105,37,35,70,-108,116,-100,98,-11,4,61,1,98,12,88,6,-27,101,2,41,-110,-31,54,53,46,103,101,81,105,87,-47,-42,-91,-2,-21,-114,-52,-34,-79,-89,-39,-25,-63,-68,-67,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,3,-126,1,1,0,-38,-84,-15,123,-111,1,113,30,43,41,78,-108,67,96,-1,-117,-16,32,96,115,-55,-74,-9,-120,101,-123,33,63,-34,21,-88,-38,-127,55,24,-5,32,-97,-8,54,-10,-17,112,-114,-88,-26,-64,49,11,24,96,115,-116,81,-95,75,-2,62,-57,-25,-16,44,98,104,-11,77,62,17,25,77,-59,-128,94,119,43,73,125,96,114,-65,94,117,-82,-109,-40,4,-62,15,43,-36,-113,18,38,-117,35,-25,-58,-54,37,105,-78,-43,120,-20,-102,80,-74,74,-25,108,-114,67,111,1,-26,57,25,107,24,-69,107,-84,-104,40,-102,-42,61,54,-73,43,47,-5,-34,-119,-111,27,-123,-46,34,116,-34,-46,-126,62,8,52,-35,-112,-107,-62,-86,51,46,25,89,10,112,-68,31,14,-51,61,-59,20,-47,-127,-105,97,10,-6,-31,-118,-119,6,-44,-78,55,-105,42,-124,33,-81,26,35,18,96,-26,123,-58,-77,-5,-70,87,-63,57,-122,74,-119,-27,-76,-97,-25,124,117,-96,-98,-2,88,112,-21,-114,70,-89,18,81,-125,-58,-26,48,-127,117,60,-42,-43,-48,-86,53,120,61,52,119,126,24,85,23,-120,-126,-30,1,-115,78,-7,47,-125,55,-108,-14,19,-105,70,23,24,106,54,17,45};		// [B
+			private static byte[] wCom = {4,-5,-2,-76,105,37,35,70,-108,116,-100,98,-11,4,61,1,98,12,88,6,-27,101,2,41,-110,-31,54,53,46,103,101,81,105,87,-47,-42,-91,-2,-21,-114,-52,-34,-79,-89,-39,-25,-63,-68,-67};		// [B
+			private static byte[] privECKey = {-19,-124,-76,-7,41,113,-83,-53,87,66,-81,61,107,79,59,72,-111,-83,-79,87,75,64,117,-82};		// [B
+			private static byte[] a = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-4};		// [B
+			private static byte[] p = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-1};		// [B
+			private static byte[] n = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-103,-34,-8,54,20,107,-55,-79,-76,-46,40,49};		// [B
+			private static byte[] b = {100,33,5,25,-27,-100,-128,-25,15,-89,-23,-85,114,36,48,73,-2,-72,-34,-20,-63,70,-71,-79};		// [B
+			private static byte[] G = {4,24,-115,-88,14,-80,48,-112,-10,124,-65,32,-21,67,-95,-120,0,-12,-1,10,-3,-126,-1,16,18,7,25,43,-107,-1,-56,-38,120,99,16,17,-19,107,36,-51,-43,115,-7,119,-95,30,121,72,17};		// [B
+		}
+
+		.publicMethodTable 6 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			challenge(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>()V {
+			.stack 5;
+			.locals 3;
+
+				L0:	aload_0;
+					invokespecial 61;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 64;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 100;
+					bastore;
+					dup;
+					sconst_1;
+					bspush -62;
+					bastore;
+					dup;
+					sconst_2;
+					bspush -115;
+					bastore;
+					dup;
+					sconst_3;
+					bspush -49;
+					bastore;
+					dup;
+					sconst_4;
+					bspush -95;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 26;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 106;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -55;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 66;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -9;
+					bastore;
+					dup;
+					bspush 11;
+					bspush -74;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -83;
+					bastore;
+					dup;
+					bspush 13;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 14;
+					bspush -37;
+					bastore;
+					dup;
+					bspush 15;
+					bspush -11;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 17;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 18;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 19;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 20;
+					bspush -23;
+					bastore;
+					dup;
+					bspush 21;
+					bspush -5;
+					bastore;
+					dup;
+					bspush 22;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 23;
+					bspush 43;
+					bastore;
+					dup;
+					bspush 24;
+					bspush -103;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -6;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 41;
+					bastore;
+					dup;
+					bspush 27;
+					bspush 30;
+					bastore;
+					dup;
+					bspush 28;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -67;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -7;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -78;
+					bastore;
+					dup;
+					bspush 32;
+					bspush 119;
+					bastore;
+					dup;
+					bspush 33;
+					bspush -98;
+					bastore;
+					dup;
+					bspush 34;
+					bspush 62;
+					bastore;
+					dup;
+					bspush 35;
+					bspush 26;
+					bastore;
+					dup;
+					bspush 36;
+					bspush 96;
+					bastore;
+					dup;
+					bspush 37;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 38;
+					bspush -114;
+					bastore;
+					dup;
+					bspush 39;
+					bspush -67;
+					bastore;
+					dup;
+					bspush 40;
+					bspush -82;
+					bastore;
+					dup;
+					bspush 41;
+					bspush 54;
+					bastore;
+					dup;
+					bspush 42;
+					bspush 84;
+					bastore;
+					dup;
+					bspush 43;
+					bspush 74;
+					bastore;
+					dup;
+					bspush 44;
+					bspush 17;
+					bastore;
+					dup;
+					bspush 45;
+					bspush -62;
+					bastore;
+					dup;
+					bspush 46;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 47;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 48;
+					bspush -98;
+					bastore;
+					dup;
+					bspush 49;
+					bspush -61;
+					bastore;
+					dup;
+					bspush 50;
+					bspush -53;
+					bastore;
+					dup;
+					bspush 51;
+					bspush -70;
+					bastore;
+					dup;
+					bspush 52;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 53;
+					bspush 43;
+					bastore;
+					dup;
+					bspush 54;
+					bspush -59;
+					bastore;
+					dup;
+					bspush 55;
+					bspush 27;
+					bastore;
+					dup;
+					bspush 56;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 57;
+					bspush 79;
+					bastore;
+					dup;
+					bspush 58;
+					bspush 84;
+					bastore;
+					dup;
+					bspush 59;
+					bspush -31;
+					bastore;
+					dup;
+					bspush 60;
+					sconst_m1;
+					bastore;
+					dup;
+					bspush 61;
+					bspush -61;
+					bastore;
+					dup;
+					bspush 62;
+					bspush 24;
+					bastore;
+					dup;
+					bspush 63;
+					bspush -127;
+					bastore;
+					putfield_a 0;		// reference be/msec/smartcard/IdentityCard.privExponent
+					aload_0;
+					bspush 64;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush -115;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 8;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 126;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 57;
+					bastore;
+					dup;
+					sconst_5;
+					bspush -79;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 82;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -109;
+					bastore;
+					dup;
+					bspush 13;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 14;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 16;
+					bspush -88;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 18;
+					bspush -43;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 125;
+					bastore;
+					dup;
+					bspush 21;
+					bspush 92;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 24;
+					bspush 38;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -86;
+					bastore;
+					dup;
+					bspush 26;
+					sconst_5;
+					bastore;
+					dup;
+					bspush 27;
+					bspush 45;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 32;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 33;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 34;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 35;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 36;
+					bspush -123;
+					bastore;
+					dup;
+					bspush 37;
+					bspush -101;
+					bastore;
+					dup;
+					bspush 38;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 39;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 40;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 41;
+					bspush -82;
+					bastore;
+					dup;
+					bspush 42;
+					bspush -30;
+					bastore;
+					dup;
+					bspush 43;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 44;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 45;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 46;
+					sconst_4;
+					bastore;
+					dup;
+					bspush 47;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 48;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 49;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 50;
+					bspush -16;
+					bastore;
+					dup;
+					bspush 51;
+					bspush 59;
+					bastore;
+					dup;
+					bspush 52;
+					bspush -40;
+					bastore;
+					dup;
+					bspush 53;
+					bspush -96;
+					bastore;
+					dup;
+					bspush 54;
+					bspush -71;
+					bastore;
+					dup;
+					bspush 55;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 56;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 57;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 58;
+					bspush 68;
+					bastore;
+					dup;
+					bspush 59;
+					bspush -31;
+					bastore;
+					dup;
+					bspush 60;
+					bspush -6;
+					bastore;
+					dup;
+					bspush 61;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 62;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 63;
+					bspush 105;
+					bastore;
+					putfield_a 1;		// reference be/msec/smartcard/IdentityCard.privModulus
+					aload_0;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_1;
+					bastore;
+					putfield_a 2;		// reference be/msec/smartcard/IdentityCard.pubExponent
+					aload_0;
+					bspush 64;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush -115;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 8;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 126;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 57;
+					bastore;
+					dup;
+					sconst_5;
+					bspush -79;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 82;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -109;
+					bastore;
+					dup;
+					bspush 13;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 14;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 16;
+					bspush -88;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 18;
+					bspush -43;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 125;
+					bastore;
+					dup;
+					bspush 21;
+					bspush 92;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 24;
+					bspush 38;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -86;
+					bastore;
+					dup;
+					bspush 26;
+					sconst_5;
+					bastore;
+					dup;
+					bspush 27;
+					bspush 45;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 32;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 33;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 34;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 35;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 36;
+					bspush -123;
+					bastore;
+					dup;
+					bspush 37;
+					bspush -101;
+					bastore;
+					dup;
+					bspush 38;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 39;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 40;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 41;
+					bspush -82;
+					bastore;
+					dup;
+					bspush 42;
+					bspush -30;
+					bastore;
+					dup;
+					bspush 43;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 44;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 45;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 46;
+					sconst_4;
+					bastore;
+					dup;
+					bspush 47;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 48;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 49;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 50;
+					bspush -16;
+					bastore;
+					dup;
+					bspush 51;
+					bspush 59;
+					bastore;
+					dup;
+					bspush 52;
+					bspush -40;
+					bastore;
+					dup;
+					bspush 53;
+					bspush -96;
+					bastore;
+					dup;
+					bspush 54;
+					bspush -71;
+					bastore;
+					dup;
+					bspush 55;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 56;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 57;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 58;
+					bspush 68;
+					bastore;
+					dup;
+					bspush 59;
+					bspush -31;
+					bastore;
+					dup;
+					bspush 60;
+					bspush -6;
+					bastore;
+					dup;
+					bspush 61;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 62;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 63;
+					bspush 105;
+					bastore;
+					putfield_a 3;		// reference be/msec/smartcard/IdentityCard.pubModulus
+					aload_0;
+					bspush 94;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 92;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 13;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 6;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 9;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 7;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 72;
+					bastore;
+					dup;
+					bspush 9;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -9;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 12;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 13;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 14;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 15;
+					sconst_5;
+					bastore;
+					dup;
+					bspush 17;
+					sconst_3;
+					bastore;
+					dup;
+					bspush 18;
+					bspush 75;
+					bastore;
+					dup;
+					bspush 20;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 21;
+					bspush 72;
+					bastore;
+					dup;
+					bspush 22;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 23;
+					bspush 65;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 8;
+					bastore;
+					dup;
+					bspush 28;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 29;
+					bspush 57;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -79;
+					bastore;
+					dup;
+					bspush 31;
+					bspush 82;
+					bastore;
+					dup;
+					bspush 32;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 33;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 34;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 35;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 36;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 37;
+					bspush -109;
+					bastore;
+					dup;
+					bspush 38;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 39;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 40;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 41;
+					bspush -88;
+					bastore;
+					dup;
+					bspush 42;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 43;
+					bspush -43;
+					bastore;
+					dup;
+					bspush 44;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 45;
+					bspush 125;
+					bastore;
+					dup;
+					bspush 46;
+					bspush 92;
+					bastore;
+					dup;
+					bspush 47;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 48;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 49;
+					bspush 38;
+					bastore;
+					dup;
+					bspush 50;
+					bspush -86;
+					bastore;
+					dup;
+					bspush 51;
+					sconst_5;
+					bastore;
+					dup;
+					bspush 52;
+					bspush 45;
+					bastore;
+					dup;
+					bspush 53;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 54;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 55;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 56;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 57;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 58;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 59;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 60;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 61;
+					bspush -123;
+					bastore;
+					dup;
+					bspush 62;
+					bspush -101;
+					bastore;
+					dup;
+					bspush 63;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 64;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 65;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 66;
+					bspush -82;
+					bastore;
+					dup;
+					bspush 67;
+					bspush -30;
+					bastore;
+					dup;
+					bspush 68;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 69;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 70;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 71;
+					sconst_4;
+					bastore;
+					dup;
+					bspush 72;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 73;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 74;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 75;
+					bspush -16;
+					bastore;
+					dup;
+					bspush 76;
+					bspush 59;
+					bastore;
+					dup;
+					bspush 77;
+					bspush -40;
+					bastore;
+					dup;
+					bspush 78;
+					bspush -96;
+					bastore;
+					dup;
+					bspush 79;
+					bspush -71;
+					bastore;
+					dup;
+					bspush 80;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 81;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 82;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 83;
+					bspush 68;
+					bastore;
+					dup;
+					bspush 84;
+					bspush -31;
+					bastore;
+					dup;
+					bspush 85;
+					bspush -6;
+					bastore;
+					dup;
+					bspush 86;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 87;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 88;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 89;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 90;
+					sconst_3;
+					bastore;
+					dup;
+					bspush 91;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 93;
+					sconst_1;
+					bastore;
+					putfield_a 4;		// reference be/msec/smartcard/IdentityCard.pubKeySC
+					aload_0;
+					sspush 344;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_1;
+					bspush -126;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 84;
+					bastore;
+					dup;
+					sconst_4;
+					sconst_2;
+					bastore;
+					dup;
+					sconst_5;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 6;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 9;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 72;
+					bastore;
+					dup;
+					bspush 14;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 15;
+					bspush -9;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 17;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 18;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 19;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 20;
+					sconst_5;
+					bastore;
+					dup;
+					bspush 22;
+					sconst_4;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -126;
+					bastore;
+					dup;
+					bspush 24;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 25;
+					bspush 62;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -126;
+					bastore;
+					dup;
+					bspush 28;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 29;
+					bspush 58;
+					bastore;
+					dup;
+					bspush 30;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 31;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 33;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 34;
+					bspush 65;
+					bastore;
+					dup;
+					bspush 36;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 37;
+					bspush 8;
+					bastore;
+					dup;
+					bspush 39;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 40;
+					bspush 57;
+					bastore;
+					dup;
+					bspush 41;
+					bspush -79;
+					bastore;
+					dup;
+					bspush 42;
+					bspush 82;
+					bastore;
+					dup;
+					bspush 43;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 44;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 45;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 46;
+					bspush -112;
+					bastore;
+					dup;
+					bspush 47;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 48;
+					bspush -109;
+					bastore;
+					dup;
+					bspush 49;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 50;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 51;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 52;
+					bspush -88;
+					bastore;
+					dup;
+					bspush 53;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 54;
+					bspush -43;
+					bastore;
+					dup;
+					bspush 55;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 56;
+					bspush 125;
+					bastore;
+					dup;
+					bspush 57;
+					bspush 92;
+					bastore;
+					dup;
+					bspush 58;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 59;
+					bspush -118;
+					bastore;
+					dup;
+					bspush 60;
+					bspush 38;
+					bastore;
+					dup;
+					bspush 61;
+					bspush -86;
+					bastore;
+					dup;
+					bspush 62;
+					sconst_5;
+					bastore;
+					dup;
+					bspush 63;
+					bspush 45;
+					bastore;
+					dup;
+					bspush 64;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 65;
+					bspush -19;
+					bastore;
+					dup;
+					bspush 66;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 67;
+					bspush -60;
+					bastore;
+					dup;
+					bspush 68;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 69;
+					bspush -119;
+					bastore;
+					dup;
+					bspush 70;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 71;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 72;
+					bspush -123;
+					bastore;
+					dup;
+					bspush 73;
+					bspush -101;
+					bastore;
+					dup;
+					bspush 74;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 75;
+					bspush 67;
+					bastore;
+					dup;
+					bspush 76;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 77;
+					bspush -82;
+					bastore;
+					dup;
+					bspush 78;
+					bspush -30;
+					bastore;
+					dup;
+					bspush 79;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 80;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 81;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 82;
+					sconst_4;
+					bastore;
+					dup;
+					bspush 83;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 84;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 85;
+					bspush 70;
+					bastore;
+					dup;
+					bspush 86;
+					bspush -16;
+					bastore;
+					dup;
+					bspush 87;
+					bspush 59;
+					bastore;
+					dup;
+					bspush 88;
+					bspush -40;
+					bastore;
+					dup;
+					bspush 89;
+					bspush -96;
+					bastore;
+					dup;
+					bspush 90;
+					bspush -71;
+					bastore;
+					dup;
+					bspush 91;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 92;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 93;
+					bspush 51;
+					bastore;
+					dup;
+					bspush 94;
+					bspush 68;
+					bastore;
+					dup;
+					bspush 95;
+					bspush -31;
+					bastore;
+					dup;
+					bspush 96;
+					bspush -6;
+					bastore;
+					dup;
+					bspush 97;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 98;
+					bspush -10;
+					bastore;
+					dup;
+					bspush 99;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 100;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 101;
+					sconst_3;
+					bastore;
+					dup;
+					bspush 102;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 104;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 105;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 106;
+					bspush 64;
+					bastore;
+					dup;
+					bspush 107;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 108;
+					bspush -62;
+					bastore;
+					dup;
+					bspush 109;
+					bspush -115;
+					bastore;
+					dup;
+					bspush 110;
+					bspush -49;
+					bastore;
+					dup;
+					bspush 111;
+					bspush -95;
+					bastore;
+					dup;
+					bspush 112;
+					bspush 26;
+					bastore;
+					dup;
+					bspush 113;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 114;
+					bspush 106;
+					bastore;
+					dup;
+					bspush 115;
+					bspush -55;
+					bastore;
+					dup;
+					bspush 116;
+					bspush 66;
+					bastore;
+					dup;
+					bspush 117;
+					bspush -9;
+					bastore;
+					dup;
+					bspush 118;
+					bspush -74;
+					bastore;
+					dup;
+					bspush 119;
+					bspush -83;
+					bastore;
+					dup;
+					bspush 120;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 121;
+					bspush -37;
+					bastore;
+					dup;
+					bspush 122;
+					bspush -11;
+					bastore;
+					dup;
+					bspush 123;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 124;
+					bspush 124;
+					bastore;
+					dup;
+					bspush 125;
+					bspush -51;
+					bastore;
+					dup;
+					bspush 126;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 127;
+					bspush -23;
+					bastore;
+					dup;
+					sspush 128;
+					bspush -5;
+					bastore;
+					dup;
+					sspush 129;
+					bspush 46;
+					bastore;
+					dup;
+					sspush 130;
+					bspush 43;
+					bastore;
+					dup;
+					sspush 131;
+					bspush -103;
+					bastore;
+					dup;
+					sspush 132;
+					bspush -6;
+					bastore;
+					dup;
+					sspush 133;
+					bspush 41;
+					bastore;
+					dup;
+					sspush 134;
+					bspush 30;
+					bastore;
+					dup;
+					sspush 135;
+					bspush -39;
+					bastore;
+					dup;
+					sspush 136;
+					bspush -67;
+					bastore;
+					dup;
+					sspush 137;
+					bspush -7;
+					bastore;
+					dup;
+					sspush 138;
+					bspush -78;
+					bastore;
+					dup;
+					sspush 139;
+					bspush 119;
+					bastore;
+					dup;
+					sspush 140;
+					bspush -98;
+					bastore;
+					dup;
+					sspush 141;
+					bspush 62;
+					bastore;
+					dup;
+					sspush 142;
+					bspush 26;
+					bastore;
+					dup;
+					sspush 143;
+					bspush 96;
+					bastore;
+					dup;
+					sspush 144;
+					bspush 103;
+					bastore;
+					dup;
+					sspush 145;
+					bspush -114;
+					bastore;
+					dup;
+					sspush 146;
+					bspush -67;
+					bastore;
+					dup;
+					sspush 147;
+					bspush -82;
+					bastore;
+					dup;
+					sspush 148;
+					bspush 54;
+					bastore;
+					dup;
+					sspush 149;
+					bspush 84;
+					bastore;
+					dup;
+					sspush 150;
+					bspush 74;
+					bastore;
+					dup;
+					sspush 151;
+					bspush 17;
+					bastore;
+					dup;
+					sspush 152;
+					bspush -62;
+					bastore;
+					dup;
+					sspush 153;
+					bspush 46;
+					bastore;
+					dup;
+					sspush 154;
+					bspush 124;
+					bastore;
+					dup;
+					sspush 155;
+					bspush -98;
+					bastore;
+					dup;
+					sspush 156;
+					bspush -61;
+					bastore;
+					dup;
+					sspush 157;
+					bspush -53;
+					bastore;
+					dup;
+					sspush 158;
+					bspush -70;
+					bastore;
+					dup;
+					sspush 159;
+					bspush 101;
+					bastore;
+					dup;
+					sspush 160;
+					bspush 43;
+					bastore;
+					dup;
+					sspush 161;
+					bspush -59;
+					bastore;
+					dup;
+					sspush 162;
+					bspush 27;
+					bastore;
+					dup;
+					sspush 163;
+					bspush 111;
+					bastore;
+					dup;
+					sspush 164;
+					bspush 79;
+					bastore;
+					dup;
+					sspush 165;
+					bspush 84;
+					bastore;
+					dup;
+					sspush 166;
+					bspush -31;
+					bastore;
+					dup;
+					sspush 167;
+					sconst_m1;
+					bastore;
+					dup;
+					sspush 168;
+					bspush -61;
+					bastore;
+					dup;
+					sspush 169;
+					bspush 24;
+					bastore;
+					dup;
+					sspush 170;
+					bspush -127;
+					bastore;
+					dup;
+					sspush 171;
+					sconst_2;
+					bastore;
+					dup;
+					sspush 172;
+					bspush 33;
+					bastore;
+					dup;
+					sspush 174;
+					bspush -64;
+					bastore;
+					dup;
+					sspush 175;
+					bspush -41;
+					bastore;
+					dup;
+					sspush 176;
+					bspush 89;
+					bastore;
+					dup;
+					sspush 177;
+					bspush -99;
+					bastore;
+					dup;
+					sspush 178;
+					bspush -57;
+					bastore;
+					dup;
+					sspush 179;
+					bspush -103;
+					bastore;
+					dup;
+					sspush 180;
+					bspush 118;
+					bastore;
+					dup;
+					sspush 181;
+					bspush -97;
+					bastore;
+					dup;
+					sspush 182;
+					bspush 113;
+					bastore;
+					dup;
+					sspush 183;
+					bspush -80;
+					bastore;
+					dup;
+					sspush 184;
+					bspush -46;
+					bastore;
+					dup;
+					sspush 185;
+					bspush 115;
+					bastore;
+					dup;
+					sspush 186;
+					bspush -39;
+					bastore;
+					dup;
+					sspush 187;
+					bspush -113;
+					bastore;
+					dup;
+					sspush 188;
+					bspush 71;
+					bastore;
+					dup;
+					sspush 189;
+					bspush 59;
+					bastore;
+					dup;
+					sspush 190;
+					bspush -27;
+					bastore;
+					dup;
+					sspush 191;
+					bspush -45;
+					bastore;
+					dup;
+					sspush 192;
+					bspush 91;
+					bastore;
+					dup;
+					sspush 193;
+					bspush -105;
+					bastore;
+					dup;
+					sspush 194;
+					bspush 20;
+					bastore;
+					dup;
+					sspush 195;
+					bspush 65;
+					bastore;
+					dup;
+					sspush 196;
+					bspush 64;
+					bastore;
+					dup;
+					sspush 197;
+					bspush -13;
+					bastore;
+					dup;
+					sspush 198;
+					bspush 101;
+					bastore;
+					dup;
+					sspush 199;
+					bspush -109;
+					bastore;
+					dup;
+					sspush 200;
+					bspush 83;
+					bastore;
+					dup;
+					sspush 201;
+					bspush 81;
+					bastore;
+					dup;
+					sspush 202;
+					bspush -128;
+					bastore;
+					dup;
+					sspush 203;
+					bspush -42;
+					bastore;
+					dup;
+					sspush 204;
+					bspush -26;
+					bastore;
+					dup;
+					sspush 205;
+					bspush 25;
+					bastore;
+					dup;
+					sspush 206;
+					sconst_2;
+					bastore;
+					dup;
+					sspush 207;
+					bspush 33;
+					bastore;
+					dup;
+					sspush 209;
+					bspush -69;
+					bastore;
+					dup;
+					sspush 210;
+					bspush 56;
+					bastore;
+					dup;
+					sspush 211;
+					bspush -83;
+					bastore;
+					dup;
+					sspush 212;
+					bspush -51;
+					bastore;
+					dup;
+					sspush 213;
+					bspush -115;
+					bastore;
+					dup;
+					sspush 214;
+					bspush 52;
+					bastore;
+					dup;
+					sspush 215;
+					bspush -124;
+					bastore;
+					dup;
+					sspush 216;
+					bspush 108;
+					bastore;
+					dup;
+					sspush 217;
+					bspush 109;
+					bastore;
+					dup;
+					sspush 218;
+					bspush -109;
+					bastore;
+					dup;
+					sspush 219;
+					bspush 45;
+					bastore;
+					dup;
+					sspush 220;
+					bspush -54;
+					bastore;
+					dup;
+					sspush 221;
+					bspush -95;
+					bastore;
+					dup;
+					sspush 222;
+					bspush 97;
+					bastore;
+					dup;
+					sspush 223;
+					bspush 28;
+					bastore;
+					dup;
+					sspush 224;
+					bspush 17;
+					bastore;
+					dup;
+					sspush 225;
+					bspush -64;
+					bastore;
+					dup;
+					sspush 226;
+					bspush 92;
+					bastore;
+					dup;
+					sspush 227;
+					bspush -33;
+					bastore;
+					dup;
+					sspush 228;
+					bspush 48;
+					bastore;
+					dup;
+					sspush 229;
+					bspush -56;
+					bastore;
+					dup;
+					sspush 230;
+					bspush 64;
+					bastore;
+					dup;
+					sspush 231;
+					bspush -2;
+					bastore;
+					dup;
+					sspush 232;
+					bspush -50;
+					bastore;
+					dup;
+					sspush 233;
+					bspush -89;
+					bastore;
+					dup;
+					sspush 234;
+					bspush -96;
+					bastore;
+					dup;
+					sspush 235;
+					bspush 46;
+					bastore;
+					dup;
+					sspush 236;
+					bspush -31;
+					bastore;
+					dup;
+					sspush 237;
+					bspush 33;
+					bastore;
+					dup;
+					sspush 238;
+					bspush 104;
+					bastore;
+					dup;
+					sspush 239;
+					bspush 124;
+					bastore;
+					dup;
+					sspush 240;
+					bspush -47;
+					bastore;
+					dup;
+					sspush 241;
+					sconst_2;
+					bastore;
+					dup;
+					sspush 242;
+					bspush 33;
+					bastore;
+					dup;
+					sspush 244;
+					bspush -76;
+					bastore;
+					dup;
+					sspush 245;
+					bspush 6;
+					bastore;
+					dup;
+					sspush 246;
+					bspush 22;
+					bastore;
+					dup;
+					sspush 247;
+					bspush 30;
+					bastore;
+					dup;
+					sspush 248;
+					bspush 42;
+					bastore;
+					dup;
+					sspush 249;
+					bspush 96;
+					bastore;
+					dup;
+					sspush 250;
+					bspush -60;
+					bastore;
+					dup;
+					sspush 251;
+					bspush -111;
+					bastore;
+					dup;
+					sspush 252;
+					bspush -78;
+					bastore;
+					dup;
+					sspush 253;
+					bspush -76;
+					bastore;
+					dup;
+					sspush 254;
+					bspush 12;
+					bastore;
+					dup;
+					sspush 255;
+					bspush -77;
+					bastore;
+					dup;
+					sspush 256;
+					bspush -92;
+					bastore;
+					dup;
+					sspush 257;
+					bspush 13;
+					bastore;
+					dup;
+					sspush 258;
+					bspush -110;
+					bastore;
+					dup;
+					sspush 259;
+					bspush -59;
+					bastore;
+					dup;
+					sspush 260;
+					bspush -125;
+					bastore;
+					dup;
+					sspush 261;
+					bspush 23;
+					bastore;
+					dup;
+					sspush 262;
+					bspush 29;
+					bastore;
+					dup;
+					sspush 263;
+					bspush -16;
+					bastore;
+					dup;
+					sspush 264;
+					bspush -37;
+					bastore;
+					dup;
+					sspush 265;
+					bspush 50;
+					bastore;
+					dup;
+					sspush 266;
+					bspush -45;
+					bastore;
+					dup;
+					sspush 267;
+					bspush -84;
+					bastore;
+					dup;
+					sspush 268;
+					bspush -91;
+					bastore;
+					dup;
+					sspush 269;
+					bspush 77;
+					bastore;
+					dup;
+					sspush 270;
+					bspush -76;
+					bastore;
+					dup;
+					sspush 271;
+					bspush -63;
+					bastore;
+					dup;
+					sspush 272;
+					bspush 104;
+					bastore;
+					dup;
+					sspush 273;
+					bspush -110;
+					bastore;
+					dup;
+					sspush 274;
+					bspush -75;
+					bastore;
+					dup;
+					sspush 275;
+					bspush -71;
+					bastore;
+					dup;
+					sspush 276;
+					sconst_2;
+					bastore;
+					dup;
+					sspush 277;
+					bspush 32;
+					bastore;
+					dup;
+					sspush 278;
+					bspush 12;
+					bastore;
+					dup;
+					sspush 279;
+					bspush -97;
+					bastore;
+					dup;
+					sspush 280;
+					bspush -74;
+					bastore;
+					dup;
+					sspush 281;
+					bspush -64;
+					bastore;
+					dup;
+					sspush 282;
+					bspush 108;
+					bastore;
+					dup;
+					sspush 283;
+					bspush 108;
+					bastore;
+					dup;
+					sspush 284;
+					sconst_5;
+					bastore;
+					dup;
+					sspush 285;
+					bspush 29;
+					bastore;
+					dup;
+					sspush 286;
+					bspush -42;
+					bastore;
+					dup;
+					sspush 287;
+					bspush -119;
+					bastore;
+					dup;
+					sspush 288;
+					bspush -99;
+					bastore;
+					dup;
+					sspush 289;
+					sconst_5;
+					bastore;
+					dup;
+					sspush 290;
+					bspush -45;
+					bastore;
+					dup;
+					sspush 291;
+					bspush -71;
+					bastore;
+					dup;
+					sspush 292;
+					bspush -37;
+					bastore;
+					dup;
+					sspush 293;
+					bspush -115;
+					bastore;
+					dup;
+					sspush 294;
+					bspush -86;
+					bastore;
+					dup;
+					sspush 295;
+					bspush -35;
+					bastore;
+					dup;
+					sspush 296;
+					bspush -40;
+					bastore;
+					dup;
+					sspush 297;
+					bspush 66;
+					bastore;
+					dup;
+					sspush 298;
+					bspush -50;
+					bastore;
+					dup;
+					sspush 299;
+					bspush -51;
+					bastore;
+					dup;
+					sspush 300;
+					bspush -21;
+					bastore;
+					dup;
+					sspush 301;
+					bspush 32;
+					bastore;
+					dup;
+					sspush 302;
+					bspush 126;
+					bastore;
+					dup;
+					sspush 303;
+					bspush 23;
+					bastore;
+					dup;
+					sspush 304;
+					sconst_3;
+					bastore;
+					dup;
+					sspush 305;
+					bspush -14;
+					bastore;
+					dup;
+					sspush 306;
+					bspush 52;
+					bastore;
+					dup;
+					sspush 307;
+					bspush 49;
+					bastore;
+					dup;
+					sspush 308;
+					bspush 122;
+					bastore;
+					dup;
+					sspush 309;
+					bspush 113;
+					bastore;
+					dup;
+					sspush 310;
+					sconst_2;
+					bastore;
+					dup;
+					sspush 311;
+					bspush 32;
+					bastore;
+					dup;
+					sspush 312;
+					bspush 58;
+					bastore;
+					dup;
+					sspush 313;
+					bspush 53;
+					bastore;
+					dup;
+					sspush 314;
+					bspush 76;
+					bastore;
+					dup;
+					sspush 315;
+					bspush 100;
+					bastore;
+					dup;
+					sspush 316;
+					bspush 74;
+					bastore;
+					dup;
+					sspush 317;
+					bspush -105;
+					bastore;
+					dup;
+					sspush 318;
+					bspush 99;
+					bastore;
+					dup;
+					sspush 319;
+					bspush -121;
+					bastore;
+					dup;
+					sspush 320;
+					bspush 22;
+					bastore;
+					dup;
+					sspush 321;
+					bspush -49;
+					bastore;
+					dup;
+					sspush 322;
+					bspush -35;
+					bastore;
+					dup;
+					sspush 323;
+					bspush -10;
+					bastore;
+					dup;
+					sspush 324;
+					bspush -43;
+					bastore;
+					dup;
+					sspush 325;
+					bspush -77;
+					bastore;
+					dup;
+					sspush 326;
+					bspush -98;
+					bastore;
+					dup;
+					sspush 327;
+					bspush -78;
+					bastore;
+					dup;
+					sspush 328;
+					bspush -6;
+					bastore;
+					dup;
+					sspush 329;
+					bspush 52;
+					bastore;
+					dup;
+					sspush 330;
+					bspush -70;
+					bastore;
+					dup;
+					sspush 331;
+					bspush -103;
+					bastore;
+					dup;
+					sspush 332;
+					bspush -72;
+					bastore;
+					dup;
+					sspush 333;
+					bspush 50;
+					bastore;
+					dup;
+					sspush 334;
+					bspush 34;
+					bastore;
+					dup;
+					sspush 335;
+					bspush 62;
+					bastore;
+					dup;
+					sspush 336;
+					bspush -31;
+					bastore;
+					dup;
+					sspush 337;
+					bspush 95;
+					bastore;
+					dup;
+					sspush 338;
+					bspush -76;
+					bastore;
+					dup;
+					sspush 339;
+					bspush 91;
+					bastore;
+					dup;
+					sspush 340;
+					bspush 63;
+					bastore;
+					dup;
+					sspush 341;
+					bspush 120;
+					bastore;
+					dup;
+					sspush 342;
+					bspush -5;
+					bastore;
+					dup;
+					sspush 343;
+					bspush -115;
+					bastore;
+					putfield_a 5;		// reference be/msec/smartcard/IdentityCard.privKeySC
+					aload_0;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_1;
+					bastore;
+					putfield_a 6;		// reference be/msec/smartcard/IdentityCard.pubExponentMW
+					aload_0;
+					sspush 256;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush -84;
+					bastore;
+					dup;
+					sconst_1;
+					bspush -72;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 112;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 12;
+					bastore;
+					dup;
+					sconst_4;
+					bspush -31;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 64;
+					bastore;
+					dup;
+					bspush 6;
+					bspush -102;
+					bastore;
+					dup;
+					bspush 7;
+					bspush -125;
+					bastore;
+					dup;
+					bspush 8;
+					bspush -104;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 40;
+					bastore;
+					dup;
+					bspush 10;
+					bspush -86;
+					bastore;
+					dup;
+					bspush 11;
+					bspush -71;
+					bastore;
+					dup;
+					bspush 12;
+					bspush -57;
+					bastore;
+					dup;
+					bspush 13;
+					bspush -56;
+					bastore;
+					dup;
+					bspush 14;
+					bspush -126;
+					bastore;
+					dup;
+					bspush 15;
+					bspush -73;
+					bastore;
+					dup;
+					bspush 16;
+					bspush -20;
+					bastore;
+					dup;
+					bspush 17;
+					bspush -75;
+					bastore;
+					dup;
+					bspush 18;
+					bspush -30;
+					bastore;
+					dup;
+					bspush 19;
+					bspush -87;
+					bastore;
+					dup;
+					bspush 20;
+					bspush -43;
+					bastore;
+					dup;
+					bspush 21;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 22;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 23;
+					bspush -28;
+					bastore;
+					dup;
+					bspush 24;
+					bspush 71;
+					bastore;
+					dup;
+					bspush 25;
+					bspush -21;
+					bastore;
+					dup;
+					bspush 26;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 27;
+					bspush -52;
+					bastore;
+					dup;
+					bspush 28;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 29;
+					bspush -121;
+					bastore;
+					dup;
+					bspush 30;
+					bspush -106;
+					bastore;
+					dup;
+					bspush 31;
+					bspush -99;
+					bastore;
+					dup;
+					bspush 32;
+					bspush 118;
+					bastore;
+					dup;
+					bspush 33;
+					bspush -21;
+					bastore;
+					dup;
+					bspush 34;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 36;
+					bspush 71;
+					bastore;
+					dup;
+					bspush 37;
+					bspush -40;
+					bastore;
+					dup;
+					bspush 38;
+					bspush -89;
+					bastore;
+					dup;
+					bspush 39;
+					bspush -36;
+					bastore;
+					dup;
+					bspush 40;
+					bspush -111;
+					bastore;
+					dup;
+					bspush 41;
+					bspush -114;
+					bastore;
+					dup;
+					bspush 42;
+					bspush -14;
+					bastore;
+					dup;
+					bspush 43;
+					bspush 75;
+					bastore;
+					dup;
+					bspush 44;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 45;
+					bspush 8;
+					bastore;
+					dup;
+					bspush 46;
+					bspush -122;
+					bastore;
+					dup;
+					bspush 47;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 48;
+					bspush 106;
+					bastore;
+					dup;
+					bspush 49;
+					bspush -36;
+					bastore;
+					dup;
+					bspush 50;
+					bspush 40;
+					bastore;
+					dup;
+					bspush 51;
+					bspush 45;
+					bastore;
+					dup;
+					bspush 52;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 53;
+					bspush -84;
+					bastore;
+					dup;
+					bspush 54;
+					bspush -47;
+					bastore;
+					dup;
+					bspush 55;
+					bspush 94;
+					bastore;
+					dup;
+					bspush 56;
+					bspush -35;
+					bastore;
+					dup;
+					bspush 57;
+					bspush -73;
+					bastore;
+					dup;
+					bspush 58;
+					bspush 9;
+					bastore;
+					dup;
+					bspush 59;
+					bspush 17;
+					bastore;
+					dup;
+					bspush 60;
+					bspush -109;
+					bastore;
+					dup;
+					bspush 61;
+					bspush 15;
+					bastore;
+					dup;
+					bspush 62;
+					bspush 44;
+					bastore;
+					dup;
+					bspush 63;
+					bspush 54;
+					bastore;
+					dup;
+					bspush 64;
+					bspush 17;
+					bastore;
+					dup;
+					bspush 65;
+					bspush 15;
+					bastore;
+					dup;
+					bspush 66;
+					bspush 31;
+					bastore;
+					dup;
+					bspush 67;
+					bspush -25;
+					bastore;
+					dup;
+					bspush 68;
+					bspush -63;
+					bastore;
+					dup;
+					bspush 69;
+					bspush -29;
+					bastore;
+					dup;
+					bspush 70;
+					bspush 98;
+					bastore;
+					dup;
+					bspush 71;
+					bspush -4;
+					bastore;
+					dup;
+					bspush 72;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 73;
+					bspush -39;
+					bastore;
+					dup;
+					bspush 74;
+					bspush 48;
+					bastore;
+					dup;
+					bspush 75;
+					bspush 47;
+					bastore;
+					dup;
+					bspush 76;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 77;
+					bspush -6;
+					bastore;
+					dup;
+					bspush 79;
+					bspush 126;
+					bastore;
+					dup;
+					bspush 80;
+					bspush 73;
+					bastore;
+					dup;
+					bspush 81;
+					bspush -117;
+					bastore;
+					dup;
+					bspush 82;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 83;
+					bspush 61;
+					bastore;
+					dup;
+					bspush 84;
+					bspush 83;
+					bastore;
+					dup;
+					bspush 85;
+					bspush 76;
+					bastore;
+					dup;
+					bspush 86;
+					bspush 117;
+					bastore;
+					dup;
+					bspush 87;
+					sconst_m1;
+					bastore;
+					dup;
+					bspush 88;
+					bspush 7;
+					bastore;
+					dup;
+					bspush 89;
+					bspush -64;
+					bastore;
+					dup;
+					bspush 90;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 91;
+					bspush 87;
+					bastore;
+					dup;
+					bspush 92;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 93;
+					bspush -108;
+					bastore;
+					dup;
+					bspush 94;
+					bspush 57;
+					bastore;
+					dup;
+					bspush 95;
+					sconst_2;
+					bastore;
+					dup;
+					bspush 96;
+					bspush 73;
+					bastore;
+					dup;
+					bspush 97;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 98;
+					bspush -116;
+					bastore;
+					dup;
+					bspush 99;
+					bspush 102;
+					bastore;
+					dup;
+					bspush 100;
+					bspush -72;
+					bastore;
+					dup;
+					bspush 101;
+					bspush 56;
+					bastore;
+					dup;
+					bspush 102;
+					bspush -14;
+					bastore;
+					dup;
+					bspush 103;
+					bspush 77;
+					bastore;
+					dup;
+					bspush 104;
+					bspush 78;
+					bastore;
+					dup;
+					bspush 105;
+					bspush -5;
+					bastore;
+					dup;
+					bspush 106;
+					bspush -77;
+					bastore;
+					dup;
+					bspush 107;
+					bspush -69;
+					bastore;
+					dup;
+					bspush 108;
+					bspush 42;
+					bastore;
+					dup;
+					bspush 109;
+					bspush -5;
+					bastore;
+					dup;
+					bspush 110;
+					bspush 55;
+					bastore;
+					dup;
+					bspush 111;
+					bspush 93;
+					bastore;
+					dup;
+					bspush 112;
+					bspush -65;
+					bastore;
+					dup;
+					bspush 113;
+					bspush -96;
+					bastore;
+					dup;
+					bspush 114;
+					sconst_1;
+					bastore;
+					dup;
+					bspush 115;
+					bspush 39;
+					bastore;
+					dup;
+					bspush 116;
+					bspush 6;
+					bastore;
+					dup;
+					bspush 117;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 118;
+					bspush 80;
+					bastore;
+					dup;
+					bspush 119;
+					bspush 95;
+					bastore;
+					dup;
+					bspush 120;
+					bspush -17;
+					bastore;
+					dup;
+					bspush 121;
+					bspush 11;
+					bastore;
+					dup;
+					bspush 122;
+					bspush 88;
+					bastore;
+					dup;
+					bspush 123;
+					bspush -91;
+					bastore;
+					dup;
+					bspush 124;
+					bspush -127;
+					bastore;
+					dup;
+					bspush 125;
+					bspush 91;
+					bastore;
+					dup;
+					bspush 126;
+					bspush 119;
+					bastore;
+					dup;
+					bspush 127;
+					bspush 121;
+					bastore;
+					dup;
+					sspush 128;
+					bspush 112;
+					bastore;
+					dup;
+					sspush 130;
+					bspush 109;
+					bastore;
+					dup;
+					sspush 131;
+					bspush 73;
+					bastore;
+					dup;
+					sspush 132;
+					bspush -23;
+					bastore;
+					dup;
+					sspush 133;
+					bspush 30;
+					bastore;
+					dup;
+					sspush 134;
+					bspush 42;
+					bastore;
+					dup;
+					sspush 135;
+					bspush 14;
+					bastore;
+					dup;
+					sspush 136;
+					bspush 54;
+					bastore;
+					dup;
+					sspush 137;
+					bspush 77;
+					bastore;
+					dup;
+					sspush 138;
+					bspush -103;
+					bastore;
+					dup;
+					sspush 139;
+					bspush -120;
+					bastore;
+					dup;
+					sspush 140;
+					bspush 90;
+					bastore;
+					dup;
+					sspush 141;
+					bspush 71;
+					bastore;
+					dup;
+					sspush 142;
+					bspush -37;
+					bastore;
+					dup;
+					sspush 143;
+					bspush 30;
+					bastore;
+					dup;
+					sspush 144;
+					bspush 86;
+					bastore;
+					dup;
+					sspush 145;
+					bspush -39;
+					bastore;
+					dup;
+					sspush 146;
+					bspush 99;
+					bastore;
+					dup;
+					sspush 147;
+					bspush -13;
+					bastore;
+					dup;
+					sspush 148;
+					bspush 90;
+					bastore;
+					dup;
+					sspush 149;
+					bspush 78;
+					bastore;
+					dup;
+					sspush 150;
+					bspush 77;
+					bastore;
+					dup;
+					sspush 151;
+					bspush 112;
+					bastore;
+					dup;
+					sspush 152;
+					bspush 91;
+					bastore;
+					dup;
+					sspush 153;
+					bspush 27;
+					bastore;
+					dup;
+					sspush 154;
+					bspush 127;
+					bastore;
+					dup;
+					sspush 155;
+					bspush -85;
+					bastore;
+					dup;
+					sspush 156;
+					bspush 121;
+					bastore;
+					dup;
+					sspush 157;
+					bspush -19;
+					bastore;
+					dup;
+					sspush 158;
+					bspush -57;
+					bastore;
+					dup;
+					sspush 159;
+					bspush -46;
+					bastore;
+					dup;
+					sspush 160;
+					bspush 29;
+					bastore;
+					dup;
+					sspush 161;
+					bspush 17;
+					bastore;
+					dup;
+					sspush 162;
+					bspush -109;
+					bastore;
+					dup;
+					sspush 163;
+					bspush 13;
+					bastore;
+					dup;
+					sspush 164;
+					bspush 100;
+					bastore;
+					dup;
+					sspush 165;
+					bspush -15;
+					bastore;
+					dup;
+					sspush 166;
+					bspush -19;
+					bastore;
+					dup;
+					sspush 167;
+					bspush 71;
+					bastore;
+					dup;
+					sspush 168;
+					bspush 105;
+					bastore;
+					dup;
+					sspush 169;
+					bspush -68;
+					bastore;
+					dup;
+					sspush 170;
+					bspush 123;
+					bastore;
+					dup;
+					sspush 171;
+					bspush 42;
+					bastore;
+					dup;
+					sspush 172;
+					bspush -93;
+					bastore;
+					dup;
+					sspush 173;
+					bspush -66;
+					bastore;
+					dup;
+					sspush 174;
+					bspush -121;
+					bastore;
+					dup;
+					sspush 175;
+					bspush -17;
+					bastore;
+					dup;
+					sspush 176;
+					bspush -67;
+					bastore;
+					dup;
+					sspush 177;
+					bspush -83;
+					bastore;
+					dup;
+					sspush 178;
+					bspush -33;
+					bastore;
+					dup;
+					sspush 179;
+					bspush 92;
+					bastore;
+					dup;
+					sspush 180;
+					bspush 112;
+					bastore;
+					dup;
+					sspush 181;
+					bspush -60;
+					bastore;
+					dup;
+					sspush 182;
+					bspush 73;
+					bastore;
+					dup;
+					sspush 183;
+					bspush 31;
+					bastore;
+					dup;
+					sspush 184;
+					bspush -101;
+					bastore;
+					dup;
+					sspush 185;
+					bspush -2;
+					bastore;
+					dup;
+					sspush 186;
+					bspush 67;
+					bastore;
+					dup;
+					sspush 187;
+					bspush 8;
+					bastore;
+					dup;
+					sspush 188;
+					bspush -36;
+					bastore;
+					dup;
+					sspush 189;
+					bspush -127;
+					bastore;
+					dup;
+					sspush 190;
+					bspush -39;
+					bastore;
+					dup;
+					sspush 191;
+					bspush 118;
+					bastore;
+					dup;
+					sspush 192;
+					bspush -75;
+					bastore;
+					dup;
+					sspush 193;
+					bspush 63;
+					bastore;
+					dup;
+					sspush 194;
+					bspush 47;
+					bastore;
+					dup;
+					sspush 195;
+					bspush -109;
+					bastore;
+					dup;
+					sspush 196;
+					bspush -42;
+					bastore;
+					dup;
+					sspush 197;
+					sconst_3;
+					bastore;
+					dup;
+					sspush 198;
+					bspush -35;
+					bastore;
+					dup;
+					sspush 199;
+					bspush 29;
+					bastore;
+					dup;
+					sspush 200;
+					bspush -119;
+					bastore;
+					dup;
+					sspush 201;
+					bspush -126;
+					bastore;
+					dup;
+					sspush 202;
+					bspush 12;
+					bastore;
+					dup;
+					sspush 203;
+					bspush -102;
+					bastore;
+					dup;
+					sspush 204;
+					bspush 11;
+					bastore;
+					dup;
+					sspush 205;
+					bspush 38;
+					bastore;
+					dup;
+					sspush 206;
+					bspush 62;
+					bastore;
+					dup;
+					sspush 207;
+					bspush -47;
+					bastore;
+					dup;
+					sspush 208;
+					bspush 74;
+					bastore;
+					dup;
+					sspush 209;
+					bspush -97;
+					bastore;
+					dup;
+					sspush 210;
+					bspush -112;
+					bastore;
+					dup;
+					sspush 211;
+					bspush -83;
+					bastore;
+					dup;
+					sspush 212;
+					bspush 90;
+					bastore;
+					dup;
+					sspush 213;
+					bspush 63;
+					bastore;
+					dup;
+					sspush 214;
+					bspush 87;
+					bastore;
+					dup;
+					sspush 215;
+					bspush -85;
+					bastore;
+					dup;
+					sspush 216;
+					bspush 48;
+					bastore;
+					dup;
+					sspush 217;
+					bspush 26;
+					bastore;
+					dup;
+					sspush 218;
+					bspush 99;
+					bastore;
+					dup;
+					sspush 219;
+					bspush 26;
+					bastore;
+					dup;
+					sspush 220;
+					bspush -52;
+					bastore;
+					dup;
+					sspush 221;
+					bspush 117;
+					bastore;
+					dup;
+					sspush 222;
+					bspush 13;
+					bastore;
+					dup;
+					sspush 223;
+					bspush -61;
+					bastore;
+					dup;
+					sspush 224;
+					bspush -59;
+					bastore;
+					dup;
+					sspush 225;
+					bspush -82;
+					bastore;
+					dup;
+					sspush 226;
+					bspush 40;
+					bastore;
+					dup;
+					sspush 227;
+					bspush -38;
+					bastore;
+					dup;
+					sspush 228;
+					bspush 73;
+					bastore;
+					dup;
+					sspush 229;
+					bspush -10;
+					bastore;
+					dup;
+					sspush 230;
+					bspush -25;
+					bastore;
+					dup;
+					sspush 231;
+					bspush -124;
+					bastore;
+					dup;
+					sspush 232;
+					bspush -4;
+					bastore;
+					dup;
+					sspush 233;
+					bspush 109;
+					bastore;
+					dup;
+					sspush 234;
+					bspush 110;
+					bastore;
+					dup;
+					sspush 235;
+					bspush 77;
+					bastore;
+					dup;
+					sspush 236;
+					bspush -68;
+					bastore;
+					dup;
+					sspush 237;
+					bspush 62;
+					bastore;
+					dup;
+					sspush 238;
+					bspush 107;
+					bastore;
+					dup;
+					sspush 239;
+					bspush -91;
+					bastore;
+					dup;
+					sspush 240;
+					bspush -62;
+					bastore;
+					dup;
+					sspush 241;
+					bspush -51;
+					bastore;
+					dup;
+					sspush 242;
+					bspush 55;
+					bastore;
+					dup;
+					sspush 243;
+					bspush -70;
+					bastore;
+					dup;
+					sspush 244;
+					bspush 96;
+					bastore;
+					dup;
+					sspush 245;
+					bspush 109;
+					bastore;
+					dup;
+					sspush 246;
+					bspush 116;
+					bastore;
+					dup;
+					sspush 247;
+					bspush -49;
+					bastore;
+					dup;
+					sspush 248;
+					bspush 11;
+					bastore;
+					dup;
+					sspush 249;
+					bspush -45;
+					bastore;
+					dup;
+					sspush 250;
+					bspush 74;
+					bastore;
+					dup;
+					sspush 251;
+					bspush 52;
+					bastore;
+					dup;
+					sspush 252;
+					bspush 78;
+					bastore;
+					dup;
+					sspush 253;
+					bspush 85;
+					bastore;
+					dup;
+					sspush 254;
+					bspush -115;
+					bastore;
+					dup;
+					sspush 255;
+					bspush 7;
+					bastore;
+					putfield_a 7;		// reference be/msec/smartcard/IdentityCard.pubModulusMW
+					aload_0;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 74;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					putfield_a 8;		// reference be/msec/smartcard/IdentityCard.serial
+					aload_0;
+					bspush 12;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 74;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 86;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 115;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 115;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 116;
+					bastore;
+					putfield_a 9;		// reference be/msec/smartcard/IdentityCard.name
+					aload_0;
+					sconst_0;
+					putfield_s 10;		// short be/msec/smartcard/IdentityCard.offset
+					aload_0;
+					aconst_null;
+					putfield_a 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					aload_0;
+					sconst_0;
+					putfield_b 12;		// boolean be/msec/smartcard/IdentityCard.isMWauthenticated
+					aload_0;
+					sconst_0;
+					putfield_s 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					aload_0;
+					sconst_m1;
+					putfield_s 14;		// short be/msec/smartcard/IdentityCard.selectedShopEntryOffset
+					aload_0;
+					sconst_0;
+					putfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					aload_0;
+					sspush 600;
+					newarray 11;
+					putfield_a 16;		// reference be/msec/smartcard/IdentityCard.logs
+					aload_0;
+					sconst_0;
+					putfield_b 12;		// boolean be/msec/smartcard/IdentityCard.isMWauthenticated
+					aload_0;
+					new 76;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					sconst_4;
+					invokespecial 110;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putfield_a 17;		// reference be/msec/smartcard/IdentityCard.pin
+					getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					sconst_4;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_1;
+					sconst_2;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_3;
+					bastore;
+					dup;
+					sconst_3;
+					sconst_4;
+					bastore;
+					sconst_0;
+					sconst_4;
+					invokevirtual 62;		// update([BSB)V
+					sconst_0;
+					sstore_1;
+					bspush 64;
+					sstore_2;
+					sload_2;
+					bspush 8;
+					smul;
+					sstore_3;
+					aload_0;
+					sconst_5;
+					sload_3;
+					sconst_0;
+					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 75;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					putfield_a 18;		// reference be/msec/smartcard/IdentityCard.privKey
+					getfield_a_this 18;		// reference be/msec/smartcard/IdentityCard.privKey
+					getfield_a_this 0;		// reference be/msec/smartcard/IdentityCard.privExponent
+					sload_1;
+					sload_2;
+					invokeinterface 4 75 6;		// javacard/security/RSAPrivateKey
+					getfield_a_this 18;		// reference be/msec/smartcard/IdentityCard.privKey
+					getfield_a_this 1;		// reference be/msec/smartcard/IdentityCard.privModulus
+					sload_1;
+					sload_2;
+					invokeinterface 4 75 7;		// javacard/security/RSAPrivateKey
+					sconst_0;
+					sstore_1;
+					sspush 256;
+					sstore_2;
+					sload_2;
+					bspush 8;
+					smul;
+					sstore_3;
+					aload_0;
+					sconst_4;
+					sload_3;
+					sconst_0;
+					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 79;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putfield_a 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
+					getfield_a_this 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
+					getfield_a_this 6;		// reference be/msec/smartcard/IdentityCard.pubExponentMW
+					sload_1;
+					sconst_3;
+					invokeinterface 4 79 6;		// javacard/security/RSAPublicKey
+					getfield_a_this 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
+					getfield_a_this 7;		// reference be/msec/smartcard/IdentityCard.pubModulusMW
+					sload_1;
+					sload_2;
+					invokeinterface 4 79 7;		// javacard/security/RSAPublicKey
+					aload_0;
+					invokevirtual 111;		// register()V
+					return;
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	new 112;		// be/msec/smartcard/IdentityCard
+					invokespecial 113;		// be/msec/smartcard/IdentityCard.<init>()V
+					return;
+		}
+
+		.method public select()Z 6 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 30;		// getTriesRemaining()B
+					ifne L2;
+				L1:	sconst_0;
+					sreturn;
+				L2:	sconst_1;
+					sreturn;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_0;
+					invokevirtual 32;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_2;
+					sconst_0;
+					baload;
+					bspush -128;
+					if_scmpeq L4;
+				L3:	sspush 28160;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					stableswitch L32 34 88 L5 L32 L6 L32 L7 L32 L8 L32 L32 L32 L32 L32 L32 L32 L32 L32 L32 L32 L10 L13 L14 L9 L15 L32 L32 L32 L32 L32 L32 L32 L19 L20 L12 L11 L21 L22 L23 L24 L16 L17 L32 L32 L32 L32 L32 L32 L18 L25 L26 L27 L32 L28 L29 L30 L31;
+				L5:	aload_0;
+					aload_1;
+					invokespecial 34;		// be/msec/smartcard/IdentityCard.validatePIN(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L6:	aload_0;
+					aload_1;
+					invokespecial 35;		// be/msec/smartcard/IdentityCard.getSerial(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L7:	aload_0;
+					aload_1;
+					invokespecial 36;		// be/msec/smartcard/IdentityCard.getName(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L8:	aload_0;
+					aload_1;
+					invokevirtual 37;		// challenge(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L9:	aload_0;
+					aload_1;
+					invokespecial 38;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L10:	aload_0;
+					aload_1;
+					invokespecial 39;		// be/msec/smartcard/IdentityCard.getPublicECCertificate(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L11:	aload_0;
+					aload_1;
+					invokespecial 40;		// be/msec/smartcard/IdentityCard.test(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L12:	aload_0;
+					aconst_null;
+					putfield_a 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					goto_w L33;
+				L13:	aload_0;
+					sconst_0;
+					putfield_s 10;		// short be/msec/smartcard/IdentityCard.offset
+					goto_w L33;
+				L14:	aload_0;
+					aload_1;
+					invokespecial 41;		// be/msec/smartcard/IdentityCard.generateSessionKey(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L15:	aload_0;
+					aload_1;
+					invokespecial 42;		// be/msec/smartcard/IdentityCard.registerShopPseudonym(Ljavacard/framework/APDU;)V
+					goto_w L33;
+				L16:	aload_0;
+					aload_1;
+					sconst_1;
+					invokespecial 43;		// be/msec/smartcard/IdentityCard.registerShopCertificate(Ljavacard/framework/APDU;S)V
+					goto L33;
+				L17:	aload_0;
+					aload_1;
+					sconst_2;
+					invokespecial 43;		// be/msec/smartcard/IdentityCard.registerShopCertificate(Ljavacard/framework/APDU;S)V
+					goto L33;
+				L18:	aload_0;
+					aload_1;
+					sconst_3;
+					invokespecial 43;		// be/msec/smartcard/IdentityCard.registerShopCertificate(Ljavacard/framework/APDU;S)V
+					goto L33;
+				L19:	aload_0;
+					aload_1;
+					invokespecial 44;		// be/msec/smartcard/IdentityCard.registerShopName(Ljavacard/framework/APDU;)V
+					goto L33;
+				L20:	aload_0;
+					aload_1;
+					invokespecial 45;		// be/msec/smartcard/IdentityCard.registerShopComplete(Ljavacard/framework/APDU;)V
+					goto L33;
+				L21:	aload_0;
+					aload_1;
+					invokevirtual 37;		// challenge(Ljavacard/framework/APDU;)V
+					goto L33;
+				L22:	aload_0;
+					aload_1;
+					invokespecial 46;		// be/msec/smartcard/IdentityCard.challengeIsAccepted(Ljavacard/framework/APDU;)V
+					goto L33;
+				L23:	aload_0;
+					aload_1;
+					invokespecial 47;		// be/msec/smartcard/IdentityCard.getNextChallenge(Ljavacard/framework/APDU;)V
+					goto L33;
+				L24:	aload_0;
+					aload_1;
+					invokespecial 48;		// be/msec/smartcard/IdentityCard.getCurrentChallenge(Ljavacard/framework/APDU;)V
+					goto L33;
+				L25:	aload_0;
+					aload_1;
+					sconst_1;
+					invokespecial 49;		// be/msec/smartcard/IdentityCard.getPseudonymCertificate(Ljavacard/framework/APDU;S)V
+					goto L33;
+				L26:	aload_0;
+					aload_1;
+					sconst_2;
+					invokespecial 49;		// be/msec/smartcard/IdentityCard.getPseudonymCertificate(Ljavacard/framework/APDU;S)V
+					goto L33;
+				L27:	aload_0;
+					aload_1;
+					sconst_3;
+					invokespecial 49;		// be/msec/smartcard/IdentityCard.getPseudonymCertificate(Ljavacard/framework/APDU;S)V
+					goto L33;
+				L28:	aload_0;
+					aload_1;
+					invokespecial 50;		// be/msec/smartcard/IdentityCard.changeLP(Ljavacard/framework/APDU;)V
+					goto L33;
+				L29:	getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					astore_3;
+					aload_0;
+					aload_1;
+					aload_3;
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					goto L33;
+				L30:	aload_0;
+					aload_1;
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.getNextLog(Ljavacard/framework/APDU;)V
+					goto L33;
+				L31:	aload_0;
+					aload_1;
+					invokespecial 54;		// be/msec/smartcard/IdentityCard.clearLogs(Ljavacard/framework/APDU;)V
+					goto L33;
+				L32:	sspush 27904;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L33:	return;
+		}
+
+		.method private clearLogs(Ljavacard/framework/APDU;)V {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					sspush 600;
+					newarray 11;
+					putfield_a 16;		// reference be/msec/smartcard/IdentityCard.logs
+					aload_0;
+					sconst_0;
+					putfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					return;
+		}
+
+		.method private getNextLog(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 55;		// be/msec/smartcard/IdentityCard.checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V
+					getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					ifne L2;
+				L1:	return;
+				L2:	getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					sconst_1;
+					ssub;
+					bspush 30;
+					smul;
+					sstore_2;
+					bspush 30;
+					newarray 11;
+					astore_3;
+					getfield_a_this 16;		// reference be/msec/smartcard/IdentityCard.logs
+					sload_2;
+					aload_3;
+					sconst_0;
+					bspush 30;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_3;
+					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					astore 4;
+					aload_0;
+					aload_1;
+					aload 4;
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					aload_0;
+					dup;
+					getfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					sconst_1;
+					ssub;
+					putfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					return;
+		}
+
+		.method private changeLP(Ljavacard/framework/APDU;)V {
+			.stack 7;
+			.locals 8;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_0;
+					aload_2;
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					astore_3;
+					aload_3;
+					sconst_0;
+					baload;
+					aload_3;
+					sconst_1;
+					baload;
+					invokestatic 60;		// be/msec/smartcard/IdentityCard.bytesToShort(BB)S
+					sstore 4;
+					sconst_2;
+					newarray 11;
+					astore 5;
+					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					sspush 439;
+					aload 5;
+					sconst_0;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 5;
+					sconst_0;
+					baload;
+					aload 5;
+					sconst_1;
+					baload;
+					invokestatic 60;		// be/msec/smartcard/IdentityCard.bytesToShort(BB)S
+					sstore 6;
+					sload 6;
+					sload 4;
+					sadd;
+					sstore 7;
+					sload 7;
+					ifge L2;
+				L1:	aload_0;
+					aload_1;
+					aload_0;
+					sconst_1;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+				L2:	sload 6;
+					sload 4;
+					sadd;
+					sstore 6;
+					sload 6;
+					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					astore 8;
+					aload 8;
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					getfield_s_this 14;		// short be/msec/smartcard/IdentityCard.selectedShopEntryOffset
+					sspush 439;
+					sadd;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					bspush 26;
+					newarray 11;
+					astore 9;
+					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					sconst_0;
+					aload 9;
+					sconst_0;
+					bspush 26;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload 9;
+					sload 4;
+					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					aload 8;
+					invokespecial 63;		// be/msec/smartcard/IdentityCard.log([B[B[B)V
+					aload_0;
+					aconst_null;
+					putfield_a 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					aload_0;
+					sconst_m1;
+					putfield_s 14;		// short be/msec/smartcard/IdentityCard.selectedShopEntryOffset
+					aload_0;
+					aload_1;
+					aload_0;
+					sconst_1;
+					newarray 11;
+					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					return;
+		}
+
+		.method private log([B[B[B)V {
+			.stack 5;
+			.locals 1;
+
+				L0:	getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					bspush 30;
+					smul;
+					sstore 4;
+					aload_1;
+					sconst_0;
+					getfield_a_this 16;		// reference be/msec/smartcard/IdentityCard.logs
+					sload 4;
+					bspush 26;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_2;
+					sconst_0;
+					getfield_a_this 16;		// reference be/msec/smartcard/IdentityCard.logs
+					sload 4;
+					bspush 26;
+					sadd;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_3;
+					sconst_0;
+					getfield_a_this 16;		// reference be/msec/smartcard/IdentityCard.logs
+					sload 4;
+					bspush 28;
+					sadd;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					dup;
+					getfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					sconst_1;
+					sadd;
+					putfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					return;
+		}
+
+		.method private getPseudonymCertificate(Ljavacard/framework/APDU;S)V {
+			.stack 5;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	sload_2;
+					sconst_1;
+					if_scmpne L2;
+				L1:	aload_0;
+					sspush 512;
+					newarray 11;
+					putfield_a 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					aload_0;
+					aload_1;
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					astore_3;
+					aload_0;
+					aload_3;
+					invokespecial 65;		// be/msec/smartcard/IdentityCard.selectShopEntry([B)Z
+					pop;
+					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					bspush 26;
+					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					sconst_0;
+					sspush 413;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					invokespecial 66;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey512([B)[B
+					astore 4;
+					aload_0;
+					sspush 512;
+					newarray 11;
+					putfield_a 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					aload 4;
+					sconst_0;
+					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					sconst_0;
+					sspush 512;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush 200;
+					newarray 11;
+					astore 5;
+					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					sconst_0;
+					aload 5;
+					sconst_0;
+					sspush 200;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_1;
+					aload 5;
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+				L2:	sload_2;
+					sconst_2;
+					if_scmpne L4;
+				L3:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					pop;
+					sspush 200;
+					newarray 11;
+					astore_3;
+					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					sspush 200;
+					aload_3;
+					sconst_0;
+					sspush 200;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_1;
+					aload_3;
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+				L4:	sload_2;
+					sconst_3;
+					if_scmpne L6;
+				L5:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					pop;
+					bspush 112;
+					newarray 11;
+					astore_3;
+					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
+					sspush 400;
+					aload_3;
+					sconst_0;
+					bspush 112;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_1;
+					aload_3;
+					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+				L6:	return;
+		}
+
+		.method private sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload_2;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload_2;
+					sconst_0;
+					aload_2;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private selectShopEntry([B)Z {
+			.stack 5;
+			.locals 3;
+
+				L0:	sconst_0;
+					sstore_2;
+					goto L5;
+				L1:	bspush 59;
+					newarray 11;
+					astore_3;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sload_2;
+					sspush 441;
+					sadd;
+					aload_3;
+					sconst_0;
+					bspush 59;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_3;
+					invokespecial 71;		// be/msec/smartcard/IdentityCard.removeNullBytes([B)[B
+					astore 4;
+					aload_1;
+					arraylength;
+					aload 4;
+					arraylength;
+					if_scmpne L4;
+				L2:	aload 4;
+					sconst_0;
+					aload_1;
+					sconst_0;
+					aload_1;
+					arraylength;
+					invokestatic 72;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L4;
+				L3:	aload_0;
+					sload_2;
+					putfield_s 14;		// short be/msec/smartcard/IdentityCard.selectedShopEntryOffset
+					aload_0;
+					sspush 500;
+					newarray 11;
+					putfield_a 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sload_2;
+					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					sconst_0;
+					sspush 500;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sconst_1;
+					sreturn;
+				L4:	sload_2;
+					sspush 500;
+					sadd;
+					sstore_2;
+				L5:	sload_2;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					arraylength;
+					if_scmplt L1;
+				L6:	sconst_0;
+					sreturn;
+		}
+
+		.method private getSerial(Ljavacard/framework/APDU;)V {
+			.stack 3;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 73;		// isValidated()Z
+					ifne L2;
+				L1:	sspush 25345;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+					goto L3;
+				L2:	aload_0;
+					aload_1;
+					invokespecial 55;		// be/msec/smartcard/IdentityCard.checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V
+					aload_0;
+					aload_1;
+					getfield_a_this 8;		// reference be/msec/smartcard/IdentityCard.serial
+					invokespecial 74;		// be/msec/smartcard/IdentityCard.SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V
+				L3:	return;
+		}
+
+		.method private getCurrentChallenge(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					sconst_2;
+					newarray 11;
+					dup;
+					sconst_0;
+					getfield_b_this 23;		// byte be/msec/smartcard/IdentityCard.challengeP1
+					bastore;
+					dup;
+					sconst_1;
+					getfield_b_this 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
+					bastore;
+					sconst_2;
+					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					return;
+		}
+
+		.method private getNextChallenge(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					sconst_2;
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
+					astore_2;
+					aload_0;
+					aload_2;
+					sconst_0;
+					baload;
+					putfield_b 23;		// byte be/msec/smartcard/IdentityCard.challengeP1
+					aload_0;
+					aload_2;
+					sconst_1;
+					baload;
+					putfield_b 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
+					aload_0;
+					aload_1;
+					aload_2;
+					aload_2;
+					arraylength;
+					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					return;
+		}
+
+		.method private challengeIsAccepted(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					astore_2;
+					getfield_a_this 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
+					sconst_0;
+					aload_2;
+					sconst_0;
+					aload_2;
+					arraylength;
+					invokestatic 72;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L2;
+				L1:	aload_0;
+					sconst_1;
+					putfield_b 12;		// boolean be/msec/smartcard/IdentityCard.isMWauthenticated
+					aload_0;
+					aload_1;
+					invokespecial 47;		// be/msec/smartcard/IdentityCard.getNextChallenge(Ljavacard/framework/APDU;)V
+					goto L3;
+				L2:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 80;		// reset()V
+					sspush 25598;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	return;
+		}
+
+		.method private validatePIN(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_b_this 12;		// boolean be/msec/smartcard/IdentityCard.isMWauthenticated
+					ifne L2;
+				L1:	sspush 25599;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	aload_0;
+					aload_1;
+					invokespecial 81;		// be/msec/smartcard/IdentityCard.receiveBytesEncryptedByMW(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_0;
+					aload_2;
+					invokespecial 71;		// be/msec/smartcard/IdentityCard.removeNullBytes([B)[B
+					astore_3;
+					aload_3;
+					arraylength;
+					sconst_4;
+					if_scmpne L5;
+				L3:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					aload_3;
+					sconst_0;
+					sconst_4;
+					invokevirtual 82;		// check([BSB)Z
+					ifne L6;
+				L4:	sspush 25344;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+					goto L6;
+				L5:	sspush 26368;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	return;
+		}
+
+		.method private getName(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 73;		// isValidated()Z
+					ifne L2;
+				L1:	sspush 25345;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+					goto L3;
+				L2:	aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					getfield_a_this 9;		// reference be/msec/smartcard/IdentityCard.name
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 9;		// reference be/msec/smartcard/IdentityCard.name
+					sconst_0;
+					getfield_a_this 9;		// reference be/msec/smartcard/IdentityCard.name
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+				L3:	return;
+		}
+
+		.method public challenge(Ljavacard/framework/APDU;)V 8 {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_0;
+					bspush 64;
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
+					putfield_a 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
+					aload_0;
+					aload_1;
+					getfield_a_this 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
+					getfield_a_this 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
+					arraylength;
+					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					return;
+		}
+
+		.method private getECCertificateLength(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getstatic_a 83;		// reference be/msec/smartcard/IdentityCard.pubECKeyCertificate
+					arraylength;
+					sstore_2;
+					sload_2;
+					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					astore_3;
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload_3;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload_3;
+					sconst_0;
+					aload_3;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private getPublicECCertificate(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 73;		// isValidated()Z
+					ifne L2;
+				L1:	sspush 25345;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+					goto L3;
+				L2:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+					sload_3;
+					newarray 11;
+					astore 4;
+					getstatic_a 83;		// reference be/msec/smartcard/IdentityCard.pubECKeyCertificate
+					getfield_s_this 10;		// short be/msec/smartcard/IdentityCard.offset
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sload_3;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					aload_0;
+					dup;
+					getfield_s 10;		// short be/msec/smartcard/IdentityCard.offset
+					sload_3;
+					sadd;
+					putfield_s 10;		// short be/msec/smartcard/IdentityCard.offset
+				L3:	return;
+		}
+
+		.method private generateSessionKey(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_2;
+					invokestatic 84;		// be/msec/smartcard/IdentityCard.getSessionKey([B)[B
+					astore_3;
+					aload_0;
+					bspush 15;
+					sspush 128;
+					sconst_0;
+					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 85;		// T_CLASSORINTERFACE javacard/security/AESKey
+					putfield_a 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					aload_3;
+					sconst_0;
+					invokeinterface 3 85 4;		// javacard/security/AESKey
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload_3;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload_3;
+					sconst_0;
+					aload_3;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method public static getSessionKey([B)[B 1 {
+			.stack 6;
+			.locals 6;
+
+				L0:	sconst_1;
+					sconst_0;
+					invokestatic 86;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+					astore_1;
+					aload_1;
+					invokestatic 87;		// be/msec/smartcard/IdentityCard.getCommonKeyPrivate()Ljavacard/security/ECPrivateKey;
+					invokevirtual 88;		// init(Ljavacard/security/PrivateKey;)V
+					aload_0;
+					astore_2;
+					aload_0;
+					arraylength;
+					sstore_3;
+					sspush 250;
+					newarray 11;
+					astore 4;
+					aload_1;
+					aload_2;
+					sconst_0;
+					sload_3;
+					aload 4;
+					sconst_0;
+					invokevirtual 89;		// generateSecret([BSS[BS)S
+					sstore 5;
+					sload 5;
+					newarray 11;
+					astore 6;
+					aload 4;
+					sconst_0;
+					aload 6;
+					sconst_0;
+					sload 5;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 6;
+					areturn;
+		}
+
+		.method public static bytesToShort(BB)S 2 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_0;
+					sload_1;
+					invokestatic 90;		// javacard/framework/Util.makeShort(BB)S
+					sreturn;
+		}
+
+		.method public static shortToByteArray(S)[B 3 {
+			.stack 3;
+			.locals 1;
+
+				L0:	sconst_2;
+					newarray 11;
+					astore_1;
+					aload_1;
+					sconst_0;
+					sload_0;
+					invokestatic 91;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					areturn;
+		}
+
+		.method public static setDomainParameters(Ljavacard/security/ECKey;)V 4 {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/ECKey;	1.17;
+
+				L0:	aload_0;
+					getstatic_a 92;		// reference be/msec/smartcard/IdentityCard.a
+					sconst_0;
+					getstatic_a 92;		// reference be/msec/smartcard/IdentityCard.a
+					arraylength;
+					invokeinterface 4 93 3;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 94;		// reference be/msec/smartcard/IdentityCard.b
+					sconst_0;
+					getstatic_a 94;		// reference be/msec/smartcard/IdentityCard.b
+					arraylength;
+					invokeinterface 4 93 4;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 95;		// reference be/msec/smartcard/IdentityCard.n
+					sconst_0;
+					getstatic_a 95;		// reference be/msec/smartcard/IdentityCard.n
+					arraylength;
+					invokeinterface 4 93 6;		// javacard/security/ECKey
+					aload_0;
+					sconst_1;
+					invokeinterface 2 93 7;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 96;		// reference be/msec/smartcard/IdentityCard.G
+					sconst_0;
+					getstatic_a 96;		// reference be/msec/smartcard/IdentityCard.G
+					arraylength;
+					invokeinterface 4 93 5;		// javacard/security/ECKey
+					aload_0;
+					getstatic_a 97;		// reference be/msec/smartcard/IdentityCard.p
+					sconst_0;
+					getstatic_a 97;		// reference be/msec/smartcard/IdentityCard.p
+					arraylength;
+					invokeinterface 4 93 0;		// javacard/security/ECKey
+					return;
+		}
+
+		.method public static getCommonKeyPublic()Ljavacard/security/PublicKey; 5 {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+				L0:	bspush 11;
+					sspush 192;
+					sconst_0;
+					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 98;		// T_CLASSORINTERFACE javacard/security/ECPublicKey
+					astore_0;
+					aload_0;
+					invokestatic 99;		// be/msec/smartcard/IdentityCard.setDomainParameters(Ljavacard/security/ECKey;)V
+					aload_0;
+					getstatic_a 100;		// reference be/msec/smartcard/IdentityCard.wCom
+					sconst_0;
+					getstatic_a 100;		// reference be/msec/smartcard/IdentityCard.wCom
+					arraylength;
+					invokeinterface 4 98 18;		// javacard/security/ECPublicKey
+					aload_0;
+					areturn;
+		}
+
+		.method public static getCommonKeyPrivate()Ljavacard/security/ECPrivateKey; 6 {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/security/ECPrivateKey;	1.18;
+
+				L0:	bspush 12;
+					sspush 192;
+					sconst_0;
+					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 101;		// T_CLASSORINTERFACE javacard/security/ECPrivateKey
+					astore_0;
+					aload_0;
+					getstatic_a 102;		// reference be/msec/smartcard/IdentityCard.privECKey
+					sconst_0;
+					getstatic_a 102;		// reference be/msec/smartcard/IdentityCard.privECKey
+					arraylength;
+					invokeinterface 4 101 18;		// javacard/security/ECPrivateKey
+					aload_0;
+					invokestatic 99;		// be/msec/smartcard/IdentityCard.setDomainParameters(Ljavacard/security/ECKey;)V
+					aload_0;
+					areturn;
+		}
+
+		.method private removeNullBytes([B)[B {
+			.stack 5;
+			.locals 3;
+
+				L0:	aload_1;
+					arraylength;
+					sstore_2;
+					sconst_0;
+					sstore_3;
+					goto L4;
+				L1:	aload_1;
+					sload_3;
+					baload;
+					ifne L3;
+				L2:	goto L5;
+				L3:	sinc 3 1;
+				L4:	sload_3;
+					sload_2;
+					if_scmplt L1;
+				L5:	sload_3;
+					newarray 11;
+					astore 4;
+					aload_1;
+					sconst_0;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 4;
+					areturn;
+		}
+
+		.method private sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V {
+			.stack 6;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	bspush 10;
+					sconst_0;
+					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					astore 4;
+					aload 4;
+					getfield_a_this 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
+					sconst_2;
+					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					sspush 256;
+					newarray 11;
+					astore 5;
+					bspush 64;
+					newarray 11;
+					astore 6;
+					aload_2;
+					sconst_0;
+					aload 6;
+					sconst_0;
+					aload_2;
+					arraylength;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 4;
+					aload_2;
+					sconst_0;
+					aload_2;
+					arraylength;
+					aload 5;
+					sconst_0;
+					invokevirtual 105;		// doFinal([BSS[BS)S
+					pop;
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload 5;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload 5;
+					sconst_0;
+					aload 5;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private receiveBytesEncryptedByMW(Ljavacard/framework/APDU;)[B {
+			.stack 6;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 106;		// setIncomingAndReceive()S
+					pop;
+					aload_1;
+					invokevirtual 107;		// getIncomingLength()S
+					sstore_3;
+					sload_3;
+					newarray 11;
+					astore 4;
+					aload_2;
+					sconst_5;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					bspush 10;
+					sconst_0;
+					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					astore 5;
+					aload 5;
+					getfield_a_this 18;		// reference be/msec/smartcard/IdentityCard.privKey
+					sconst_1;
+					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					sspush 256;
+					newarray 11;
+					astore 6;
+					aload 5;
+					aload 4;
+					sconst_0;
+					sload_3;
+					aload 6;
+					sconst_0;
+					invokevirtual 105;		// doFinal([BSS[BS)S
+					sstore 7;
+					sload 7;
+					newarray 11;
+					astore 8;
+					aload 6;
+					sconst_0;
+					aload 8;
+					sconst_0;
+					sload 7;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 6;
+					areturn;
+		}
+
+		.method private receiveBytes(Ljavacard/framework/APDU;)[B {
+			.stack 5;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 106;		// setIncomingAndReceive()S
+					pop;
+					aload_1;
+					invokevirtual 107;		// getIncomingLength()S
+					sstore_3;
+					sload_3;
+					newarray 11;
+					astore 4;
+					aload_2;
+					sconst_5;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 4;
+					areturn;
+		}
+
+		.method private checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 106;		// setIncomingAndReceive()S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sstore_3;
+					aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+					sload_3;
+					getfield_b_this 23;		// byte be/msec/smartcard/IdentityCard.challengeP1
+					if_scmpne L3;
+				L1:	sload 4;
+					getfield_b_this 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
+					if_scmpne L3;
+				L2:	aload_0;
+					invokespecial 108;		// be/msec/smartcard/IdentityCard.clearChallenges()V
+					goto L4;
+				L3:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 80;		// reset()V
+					sspush 25598;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	return;
+		}
+
+		.method private checkChallenge(Ljavacard/framework/APDU;)[B {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 106;		// setIncomingAndReceive()S
+					pop;
+					aload_2;
+					sconst_2;
+					baload;
+					sstore_3;
+					aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+					sload_3;
+					getfield_b_this 23;		// byte be/msec/smartcard/IdentityCard.challengeP1
+					if_scmpne L3;
+				L1:	sload 4;
+					getfield_b_this 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
+					if_scmpne L3;
+				L2:	aload_0;
+					invokespecial 108;		// be/msec/smartcard/IdentityCard.clearChallenges()V
+					aload_2;
+					areturn;
+				L3:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
+					invokevirtual 80;		// reset()V
+					sspush 25598;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method private receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B {
+			.stack 5;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 109;		// be/msec/smartcard/IdentityCard.checkChallenge(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_1;
+					invokevirtual 107;		// getIncomingLength()S
+					sstore_3;
+					sload_3;
+					newarray 11;
+					astore 4;
+					aload_2;
+					sconst_5;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 4;
+					areturn;
+		}
+
+		.method private clearChallenges()V {
+			.stack 3;
+			.locals 1;
+
+				L0:	aload_0;
+					sconst_2;
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
+					astore_1;
+					aload_0;
+					aload_1;
+					sconst_0;
+					baload;
+					putfield_b 23;		// byte be/msec/smartcard/IdentityCard.challengeP1
+					aload_0;
+					aload_1;
+					sconst_1;
+					baload;
+					putfield_b 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
+					return;
+		}
+
+		.method private test(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_0;
+					aload_1;
+					aload_2;
+					aload_2;
+					arraylength;
+					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					return;
+		}
+
+		.method private registerShopComplete(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					ifne L2;
+				L1:	aload_0;
+					sspush 500;
+					newarray 11;
+					putfield_a 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					aload_0;
+					sspush 500;
+					putfield_s 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sconst_0;
+					bspush 26;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					bspush 26;
+					sspush 413;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sconst_0;
+					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					astore_2;
+					aload_2;
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sspush 439;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sspush 441;
+					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
+					arraylength;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					goto_w L3;
+				L2:	getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					sspush 500;
+					sadd;
+					newarray 11;
+					astore_2;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sconst_0;
+					aload_2;
+					sconst_0;
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					sspush 500;
+					sadd;
+					newarray 11;
+					putfield_a 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					aload_2;
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					sconst_0;
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					bspush 26;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					bspush 26;
+					sadd;
+					sspush 413;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sconst_0;
+					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					astore_3;
+					aload_3;
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					sspush 439;
+					sadd;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
+					sconst_0;
+					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
+					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					sspush 441;
+					sadd;
+					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
+					arraylength;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					dup;
+					getfield_s 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+					sspush 500;
+					sadd;
+					putfield_s 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
+				L3:	return;
+		}
+
+		.method private registerShopName(Ljavacard/framework/APDU;)V {
+			.stack 3;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					putfield_a 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
+					return;
+		}
+
+		.method private registerShopCertificate(Ljavacard/framework/APDU;S)V {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					astore_3;
+					sload_2;
+					sconst_1;
+					if_scmpne L2;
+				L1:	aload_0;
+					sspush 512;
+					newarray 11;
+					putfield_a 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
+					aload_3;
+					sconst_0;
+					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
+					sconst_0;
+					sspush 200;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					goto L6;
+				L2:	sload_2;
+					sconst_2;
+					if_scmpne L4;
+				L3:	aload_3;
+					sconst_0;
+					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
+					sspush 200;
+					sspush 200;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					goto L6;
+				L4:	sload_2;
+					sconst_3;
+					if_scmpne L6;
+				L5:	aload_3;
+					sconst_0;
+					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
+					sspush 400;
+					bspush 112;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					astore 4;
+					aload_0;
+					sspush 413;
+					newarray 11;
+					putfield_a 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
+					aload 4;
+					sconst_0;
+					getfield_a_this 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
+					sconst_0;
+					sspush 413;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+				L6:	return;
+		}
+
+		.method private registerShopPseudonym(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_0;
+					aload_2;
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					astore_3;
+					aload_0;
+					bspush 26;
+					newarray 11;
+					putfield_a 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
+					aload_3;
+					sconst_0;
+					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
+					sconst_0;
+					bspush 26;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_1;
+					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
+					bspush 26;
+					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					return;
+		}
+
+		.method private SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V {
+			.stack 4;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					ifnonnull L2;
+				L1:	sspush 27014;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	aload_0;
+					aload_2;
+					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					astore_3;
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload_3;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload_3;
+					sconst_0;
+					aload_3;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private encryptWithSessionKey(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					ifnonnull L2;
+				L1:	sspush 27014;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	aload_0;
+					aload_1;
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_0;
+					aload_2;
+					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					astore_3;
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload_3;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload_3;
+					sconst_0;
+					aload_3;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private decryptWithSessionKey(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					ifnonnull L2;
+				L1:	sspush 27014;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	aload_1;
+					invokevirtual 31;		// getBuffer()[B
+					astore_2;
+					aload_1;
+					invokevirtual 106;		// setIncomingAndReceive()S
+					sstore_3;
+					sload_3;
+					newarray 11;
+					astore 4;
+					aload_2;
+					sconst_5;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload 4;
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					astore 5;
+					aload_1;
+					invokevirtual 68;		// setOutgoing()S
+					pop;
+					aload_1;
+					aload 5;
+					arraylength;
+					invokevirtual 69;		// setOutgoingLength(S)V
+					aload_1;
+					aload 5;
+					sconst_0;
+					aload 5;
+					arraylength;
+					invokevirtual 70;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private encryptWithSessionKey([B)[B {
+			.stack 6;
+			.locals 3;
+
+				L0:	bspush 13;
+					sconst_0;
+					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					astore_2;
+					aload_2;
+					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					sconst_2;
+					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					sspush 128;
+					newarray 11;
+					astore_3;
+					aload_1;
+					sconst_0;
+					aload_3;
+					sconst_0;
+					aload_1;
+					arraylength;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush 128;
+					newarray 11;
+					astore 4;
+					aload_2;
+					aload_3;
+					sconst_0;
+					sspush 128;
+					aload 4;
+					sconst_0;
+					invokevirtual 105;		// doFinal([BSS[BS)S
+					pop;
+					aload 4;
+					areturn;
+		}
+
+		.method private encryptWithSessionKey512([B)[B {
+			.stack 6;
+			.locals 3;
+
+				L0:	bspush 13;
+					sconst_0;
+					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					astore_2;
+					aload_2;
+					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					sconst_2;
+					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					sspush 512;
+					newarray 11;
+					astore_3;
+					aload_1;
+					sconst_0;
+					aload_3;
+					sconst_0;
+					aload_1;
+					arraylength;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush 512;
+					newarray 11;
+					astore 4;
+					aload_2;
+					aload_3;
+					sconst_0;
+					sspush 512;
+					aload 4;
+					sconst_0;
+					invokevirtual 105;		// doFinal([BSS[BS)S
+					pop;
+					aload 4;
+					areturn;
+		}
+
+		.method private decryptWithSessionKey([B)[B {
+			.stack 6;
+			.locals 3;
+
+				L0:	bspush 13;
+					sconst_0;
+					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					astore_2;
+					aload_2;
+					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
+					sconst_1;
+					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					sspush 512;
+					newarray 11;
+					astore_3;
+					aload_1;
+					sconst_0;
+					aload_3;
+					sconst_0;
+					aload_1;
+					arraylength;
+					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sspush 512;
+					newarray 11;
+					astore 4;
+					aload_2;
+					aload_3;
+					sconst_0;
+					sspush 512;
+					aload 4;
+					sconst_0;
+					invokevirtual 105;		// doFinal([BSS[BS)S
+					pop;
+					aload 4;
+					areturn;
+		}
+
+		.method private getRandomByteArray(S)[B {
+			.stack 4;
+			.locals 2;
+
+				L0:	sload_1;
+					newarray 11;
+					astore_2;
+					sconst_1;
+					invokestatic 114;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					astore_3;
+					aload_3;
+					aload_2;
+					sconst_0;
+					sload_1;
+					invokevirtual 115;		// generateData([BSS)V
+					aload_2;
+					areturn;
+		}
+
+	}
+
+}

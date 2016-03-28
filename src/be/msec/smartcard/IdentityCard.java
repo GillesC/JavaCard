@@ -2,6 +2,7 @@ package be.msec.smartcard;
 
 import javacard.framework.APDU;
 import javacard.framework.Applet;
+import javacard.framework.CardException;
 import javacard.framework.ISO7816;
 import javacard.framework.ISOException;
 import javacard.framework.OwnerPIN;
@@ -26,6 +27,11 @@ public class IdentityCard extends Applet {
 	private static final byte VALIDATE_PIN_INS = 0x22;
 	private final static short SW_VERIFICATION_FAILED = 0x6300;
 	private final static short SW_PIN_VERIFICATION_REQUIRED = 0x6301;
+	private final static short SW_TEST = 0x6302;
+	
+	private static final short MW_MUST_BE_AUTHENTICATED = 0x63ff;
+    private static final short CHALLENGE_NOT_ACCEPTED = 0x63fe;
+    private static final short NO_SHOP_FOUND = 0x63fd;
 
 	private static final byte GET_SERIAL_INS = 0x24;
 	private static final byte GET_NAME_INS = 0x26;
@@ -82,9 +88,10 @@ public class IdentityCard extends Applet {
     public static final byte CLEAR_LOGS= 0x58;   
     
     
-    private static final byte MW_MUST_BE_AUTHENTICATED = (byte) 0xff;
-    private static final byte CHALLENGE_NOT_ACCEPTED = (byte) 0xfe;
-    private static final byte NO_SHOP_FOUND = (byte) 0xfd;
+    public static final byte GET_LP = 0x59;
+    
+    
+    
     
     
     private static final byte TEST = 0x43;
@@ -247,7 +254,7 @@ public class IdentityCard extends Applet {
 
 	private RSAPrivateKey privKey;
 
-	private short offset = 0;
+	private short offset = (short) 0;
 
 	private AESKey sessionKey = null;
 	
@@ -257,7 +264,7 @@ public class IdentityCard extends Applet {
 	private byte challengeP2;
 	
 	private byte[] shopEntries;
-	private short shopEntryOffset = 0;
+	private short shopEntryOffset = (short) 0;
 	private byte[] selectedPseudoCertificate;
 	
 	/* register variables */
@@ -265,9 +272,9 @@ public class IdentityCard extends Applet {
 
 	private byte[] encryptedCertificateTemp;
 
-	private short selectedShopEntryOffset = -1;
+	private short selectedShopEntryOffset = (short) -1;
 
-	private int numberOfLogs = 0;
+	private short numberOfLogs = (short) 0;
 
 	private byte[] logs = new byte[600]; //max number of logs is 20 and a log is 30 bytes long, -> 600 bytes long
 
@@ -418,6 +425,8 @@ public class IdentityCard extends Applet {
 			getPseudonymCertificate(apdu, (short) 3); break;
 		case CHANGE_LP:
 			changeLP(apdu); break;
+		case GET_LP:
+			getLP(apdu); break;
 		case GET_NUMBER_OF_LOGS:{
 			byte[] numLogs = shortToByteArray((short) numberOfLogs);
 			sendBytesNotEncrypted(apdu, numLogs);
@@ -434,19 +443,20 @@ public class IdentityCard extends Applet {
 	}
 
 	private void clearLogs(APDU apdu) {
-		logs = new byte[600];
-		numberOfLogs = 0;
+		logs = new byte[(short) 600];
+		numberOfLogs = (short) 0;
 	}
 
 	private void getNextLog(APDU apdu) {
+		checkChallengeWithoutBuffer(apdu);
 		// Fetch log at the end of logs
 		// So we can decrement the number of logs
 		// without needing an extra parameter to track the number of fetched logs
 		
 		// 1. Fetch last log from logs
-		if(numberOfLogs==0) return;
+		if(numberOfLogs==(short) 0) return;
 		short beginLastLog = (short) ((numberOfLogs-1)*30);
-		byte[] lastLog = new byte[30];
+		byte[] lastLog = new byte[(short) 30];
 		Util.arrayCopy(logs, (short) beginLastLog, lastLog, (short) 0, (short) 30); 
 		
 		// 2. Encrypt with sessionkey and send back
@@ -458,6 +468,7 @@ public class IdentityCard extends Applet {
 		
 	}
 
+
 	/*
 	 * This method will change the LP by an amount specified in the apdu data
 	 * this for the shop who's been selected earlier by the 'getPseudonymCertificate'
@@ -468,6 +479,7 @@ public class IdentityCard extends Applet {
 	 * If failed an 0x01 byte will be send (encrypted by sessionkey)
 	 * 
 	 */
+
 	private void changeLP(APDU apdu) {
 		// 1.	get amount and parse to short
 		byte[] data = receiveBytesAndCheckChallenge(apdu);
@@ -475,30 +487,33 @@ public class IdentityCard extends Applet {
 		short amount = bytesToShort(am[0], am[1]);
 		
 		// 2.	get LP for selected shop entry (begins at 439)
-		byte[] lp = new byte[2];
+		byte[] lp = new byte[(short) 2];
 		Util.arrayCopy(selectedShopEntry, (short) 439, lp, (short) 0, (short) 2);
-		short LP = bytesToShort(lp[0], lp[1]);
+		short LP = (short) bytesToShort(lp[0], lp[1]);
+
 		
 		// 3.	Check if LP won't get lower than 0
-		if(LP+amount<0) sendBytesNotEncrypted(apdu, encryptWithSessionKey(new byte[]{0x01}));
+		short LPAfterTransaction  = (short) ((short) ((short) LP) + ((short) amount));
+		if(LPAfterTransaction < (short) 0) sendBytesNotEncrypted(apdu, encryptWithSessionKey(new byte[]{0x01}));
+		
 		
 		// 4.	OK everything looks fine, let's do this
 		//		The amount can also be negative so we take the sum of the current LP and the amount
-		LP+= amount;
+		LP= (short) (LP + amount);
 		
 		// 5.	Save new LP to shopEntries
 		byte[] newLP = shortToByteArray(LP);
-		Util.arrayCopy(newLP, (short) 0, shopEntries, (short) (selectedShopEntryOffset+439), (short) 2);
+		Util.arrayCopy(newLP, (short) 0, shopEntries, (short) (selectedShopEntryOffset+(short)439), (short) 2);
 		
 		
 		// 6.	Log transaction
-		byte[] pseudonym = new byte[26];
+		byte[] pseudonym = new byte[(short) 26];
 		Util.arrayCopy(selectedShopEntry, (short) 0, pseudonym, (short) 0, (short) 26);
 		log(pseudonym, shortToByteArray(amount), newLP);
 		
 		// 7.	discard selectedShopEntry and offset
 		selectedShopEntry = null;
-		selectedShopEntryOffset = -1;
+		selectedShopEntryOffset = (short) -1;
 		
 		// 8.	Send succeeded message ecrypted by sessionkey back
 		sendBytesNotEncrypted(apdu, encryptWithSessionKey(new byte[]{0x00}));
@@ -507,11 +522,12 @@ public class IdentityCard extends Applet {
 	/*
 	 * This method wil save the transaction to a log byte[]
 	 */
+
 	private void log(byte[] pseudonym, byte[] amount, byte[] newLP) {
 		short offset = (short) ((short) numberOfLogs*((short) 30)); // a log is 30 bytes long
 		Util.arrayCopy(pseudonym, (short) 0, logs, (short) offset, (short) 26); 
-		Util.arrayCopy(amount, (short) 0, logs, (short) ((short) offset+2), (short) 2); 
-		Util.arrayCopy(newLP, (short) 0, logs, (short) ((short) offset+4), (short) 2); 
+		Util.arrayCopy(amount, (short) 0, logs, (short) ((short) offset+26), (short) 2); 
+		Util.arrayCopy(newLP, (short) 0, logs, (short) ((short) offset+28), (short) 2); 
 		numberOfLogs ++;		
 	}
 
@@ -524,46 +540,61 @@ public class IdentityCard extends Applet {
 	 * 	4. 	based on which part send piece of encrypted certificate
 	 * 	
 	 */
-	private void getPseudonymCertificate(APDU apdu, short part) {
+	private void getPseudonymCertificate(APDU apdu, short part){
 		// 1. if part 1 get full certificate
 		if(part==1){
-			selectedPseudoCertificate = new byte[512]; //512 because encryption works with blocks of 128
+			selectedPseudoCertificate = new byte[(short) 512]; //512 because encryption works with blocks of 128
+			
 			
 			// 1.a load shop entry for shopname
 			byte[] shopName = receiveBytesAndCheckChallenge(apdu);
+			
 			boolean found = selectShopEntry(shopName);
-			if(!found) ISOException.throwIt(NO_SHOP_FOUND);
 			
 			// 1.b load certificate from selected shop entry
 			//		certificate starts at index 26, size is 413 bytes
 			Util.arrayCopy(selectedShopEntry, (short) 26, selectedPseudoCertificate, (short) 0, (short) 413);
 			
 			// 1.c encrypt selected certificate
-			selectedPseudoCertificate = encryptWithSessionKey(selectedPseudoCertificate);
+			byte[] encryptedData = encryptWithSessionKey512(selectedPseudoCertificate);
+			selectedPseudoCertificate = new byte[512];
+			Util.arrayCopy(encryptedData, (short) 0, selectedPseudoCertificate, (short) 0, (short) 512);
 			
 			// 1.d send first 200 bytes back
-			byte[] dataToSend = new byte[200];
+			byte[] dataToSend = new byte[(short) 200];
 			Util.arrayCopy(selectedPseudoCertificate, (short) 0, dataToSend, (short) 0, (short) 200);
 			sendBytesNotEncrypted(apdu, dataToSend);
 		}
 		// 2. based on which part send piece of certificate
 		if(part==2){
-			byte[] dataToSend = new byte[200];
-			Util.arrayCopy(selectedPseudoCertificate, (short) 200, dataToSend, (short) 0, (short) 200);
-			sendBytesNotEncrypted(apdu, dataToSend);
+			receiveBytes(apdu);
+			byte[] d = new byte[(short) 200];
+			Util.arrayCopy(selectedPseudoCertificate, (short) 200, d, (short) 0, (short) 200);
+			sendBytesNotEncrypted(apdu, d);
 		}
 		if(part==3){
-			byte[] dataToSend = new byte[112];
+			receiveBytes(apdu);
+			byte[] dataToSend = new byte[(short) 112];
 			Util.arrayCopy(selectedPseudoCertificate, (short) 400, dataToSend, (short) 0, (short) 112);
 			sendBytesNotEncrypted(apdu, dataToSend);
 		}
 		
 	}
 
+
 	private void sendBytesNotEncrypted(APDU apdu, byte[] dataToSend) {
 		apdu.setOutgoing();
 		apdu.setOutgoingLength((short) dataToSend.length);
 		apdu.sendBytesLong(dataToSend, (short) 0, (short) dataToSend.length);
+	}
+	
+	private void getLP(APDU apdu) {
+		byte[] shopName = receiveBytesAndCheckChallenge(apdu);
+		selectShopEntry(shopName);
+		// location of lp: 439
+		byte[] lp = new byte[2];
+		Util.arrayCopy(selectedShopEntry, (short) 0, lp, (short) 0, (short) 2);
+		SendAndEncryptWithSessionKey(apdu, lp);
 	}
 
 	/* 
@@ -572,22 +603,21 @@ public class IdentityCard extends Applet {
 	 */
 	private boolean selectShopEntry(byte[] shopName) {
 		// place of shopname: 441 - 500 in every entry
-		for(short offset=0; offset<shopEntries.length; offset+=500){
-			byte[] selectedShopName = new byte[59];// 59 = 500 - 441
+		for(short offset=0; offset<(short) shopEntries.length; offset+=500){
+			byte[] selectedShopName = new byte[(short) 59];// 59 = 500 - 441
 			Util.arrayCopy(shopEntries, (short) (offset+441), selectedShopName, (short) 0, (short) 59);
 			byte[] trimmedShopName = removeNullBytes(selectedShopName);
 			if(shopName.length==trimmedShopName.length){
 				if(Util.arrayCompare(trimmedShopName, (short) 0, shopName, (short) 0, (short) shopName.length)==0x00){
 					// Finally found that shit!
 					selectedShopEntryOffset  = offset;
-					selectedShopEntry = new byte[500];
+					selectedShopEntry = new byte[(short) 500];
 					Util.arrayCopy(shopEntries, (short) offset, selectedShopEntry, (short) 0, (short) 500);
 					return true;
 				}
 			}
 		}
 		return false;
-		
 	}
 
 	private void getSerial(APDU apdu) {
@@ -865,7 +895,6 @@ public class IdentityCard extends Applet {
 			return buffer;
 		}
 		
-		
 		pin.reset();
 		ISOException.throwIt(CHALLENGE_NOT_ACCEPTED);
 		
@@ -888,8 +917,7 @@ public class IdentityCard extends Applet {
 	}
 
 	private void test(APDU apdu) {
-		byte[] data = receiveBytes(apdu);
-		
+		byte[] data = receiveBytes(apdu);		
 		sendBytesEncryptedForMW(apdu, data, (short) data.length); 
 	}
 	
@@ -1017,6 +1045,16 @@ public class IdentityCard extends Applet {
 		Util.arrayCopy(data, (short) 0, dataToEncrypt, (short) 0, (short) data.length);
 		byte[] encryptedData = new byte[128];
 		cipherSYM.doFinal(dataToEncrypt, (short)0, (short)128, encryptedData, (short)0);
+		return encryptedData;
+	}
+	
+	private byte[] encryptWithSessionKey512(byte[] data) {
+		Cipher cipherSYM = Cipher.getInstance(Cipher.ALG_AES_BLOCK_128_CBC_NOPAD, false);
+		cipherSYM.init(this.sessionKey, Cipher.MODE_ENCRYPT);
+		byte[] dataToEncrypt = new byte[512];
+		Util.arrayCopy(data, (short) 0, dataToEncrypt, (short) 0, (short) data.length);
+		byte[] encryptedData = new byte[512];
+		cipherSYM.doFinal(dataToEncrypt, (short)0, (short)512, encryptedData, (short)0);
 		return encryptedData;
 	}
 	
