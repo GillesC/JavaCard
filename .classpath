@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="JCDK2.2.2"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Gilles Callebaut/Desktop/nodige files/bcmail-jdk16-146.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gilles Callebaut/Desktop/nodige files/bcprov-jdk16-146.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
