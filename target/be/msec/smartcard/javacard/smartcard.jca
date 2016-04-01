@@ -1,5 +1,5 @@
 // converted by version 1.3
-// on Mon Mar 28 17:08:10 CEST 2016
+// on Fri Apr 01 17:24:11 CEST 2016
 
 .package be/msec/smartcard {
 	.aid 0x1:0x2:0x3:0x4:0x5:0x6:0x7:0x8:0x9:0x0;
@@ -154,170 +154,174 @@
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
 		// 51
-		staticMethodRef IdentityCard/shortToByteArray(S)[B;
+		staticMethodRef IdentityCard/getLP(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
 		// 52
+		staticMethodRef IdentityCard/shortToByteArray(S)[B;
+		// 53
 		staticMethodRef IdentityCard/sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 53
+		// 54
 		staticMethodRef IdentityCard/getNextLog(Ljavacard/framework/APDU;)V;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 54
+		// 55
 		staticMethodRef IdentityCard/clearLogs(Ljavacard/framework/APDU;)V;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 55
+		// 56
 		staticMethodRef IdentityCard/checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 56
-		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 		// 57
-		staticMethodRef IdentityCard/encryptWithSessionKey([B)[B;
+		staticMethodRef 0.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 		// 58
+		staticMethodRef IdentityCard/encryptWithSessionKey([B)[B;
+		// 59
 		staticMethodRef IdentityCard/receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 59
-		staticMethodRef IdentityCard/decryptWithSessionKey([B)[B;
 		// 60
-		staticMethodRef IdentityCard/bytesToShort(BB)S;
+		staticMethodRef IdentityCard/decryptWithSessionKey([B)[B;
 		// 61
-		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
+		staticMethodRef IdentityCard/bytesToShort(BB)S;
 		// 62
-		virtualMethodRef 0.9.8([BSB)V;		// update([BSB)V
+		staticMethodRef 0.3.0()V;		// javacard/framework/Applet.<init>()V
 		// 63
-		staticMethodRef IdentityCard/log([B[B[B)V;
+		virtualMethodRef 0.9.8([BSB)V;		// update([BSB)V
 		// 64
+		staticMethodRef IdentityCard/log([B[B[B)V;
+		// 65
 		staticMethodRef 1.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
 			.descriptor	Ljavacard/security/Key;	1.0;
 
-		// 65
-		staticMethodRef IdentityCard/selectShopEntry([B)Z;
 		// 66
-		staticMethodRef IdentityCard/encryptWithSessionKey512([B)[B;
+		staticMethodRef IdentityCard/selectShopEntry([B)Z;
 		// 67
+		staticMethodRef IdentityCard/encryptWithSessionKey512([B)[B;
+		// 68
 		staticMethodRef IdentityCard/receiveBytes(Ljavacard/framework/APDU;)[B;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 68
-		virtualMethodRef 0.10.7()S;		// setOutgoing()S
 		// 69
-		virtualMethodRef 0.10.9(S)V;		// setOutgoingLength(S)V
+		virtualMethodRef 0.10.7()S;		// setOutgoing()S
 		// 70
-		virtualMethodRef 0.10.5([BSS)V;		// sendBytesLong([BSS)V
+		virtualMethodRef 0.10.9(S)V;		// setOutgoingLength(S)V
 		// 71
-		staticMethodRef IdentityCard/removeNullBytes([B)[B;
+		virtualMethodRef 0.10.5([BSS)V;		// sendBytesLong([BSS)V
 		// 72
-		staticMethodRef 0.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
-		// 73
-		virtualMethodRef 0.9.4()Z;		// isValidated()Z
-		// 74
 		staticMethodRef IdentityCard/SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
+		// 73
+		staticMethodRef IdentityCard/removeNullBytes([B)[B;
+		// 74
+		staticMethodRef 0.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
 		// 75
-		classRef 1.8;		// javacard/security/RSAPrivateKey
+		virtualMethodRef 0.9.4()Z;		// isValidated()Z
 		// 76
-		classRef 0.9;		// javacard/framework/OwnerPIN
+		classRef 1.8;		// javacard/security/RSAPrivateKey
 		// 77
+		classRef 0.9;		// javacard/framework/OwnerPIN
+		// 78
 		staticMethodRef IdentityCard/sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 78
-		staticMethodRef IdentityCard/getRandomByteArray(S)[B;
 		// 79
-		classRef 1.9;		// javacard/security/RSAPublicKey
+		staticMethodRef IdentityCard/getRandomByteArray(S)[B;
 		// 80
-		virtualMethodRef 0.9.5()V;		// reset()V
+		classRef 1.9;		// javacard/security/RSAPublicKey
 		// 81
+		virtualMethodRef 0.9.5()V;		// reset()V
+		// 82
 		staticMethodRef IdentityCard/receiveBytesEncryptedByMW(Ljavacard/framework/APDU;)[B;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 82
-		virtualMethodRef 0.9.1([BSB)Z;		// check([BSB)Z
 		// 83
-		staticFieldRef byte[] IdentityCard/pubECKeyCertificate;
+		virtualMethodRef 0.9.1([BSB)Z;		// check([BSB)Z
 		// 84
-		staticMethodRef IdentityCard/getSessionKey([B)[B;
+		staticFieldRef byte[] IdentityCard/pubECKeyCertificate;
 		// 85
-		classRef 1.20;		// javacard/security/AESKey
+		staticMethodRef IdentityCard/getSessionKey([B)[B;
 		// 86
+		classRef 1.20;		// javacard/security/AESKey
+		// 87
 		staticMethodRef 1.22.0(BZ)Ljavacard/security/KeyAgreement;;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
 			.descriptor	Ljavacard/security/KeyAgreement;	1.22;
 
-		// 87
+		// 88
 		staticMethodRef IdentityCard/getCommonKeyPrivate()Ljavacard/security/ECPrivateKey;;
 			.descriptor	Ljavacard/security/ECPrivateKey;	1.18;
 
-		// 88
+		// 89
 		virtualMethodRef 1.22.1(Ljavacard/security/PrivateKey;)V;		// init(Ljavacard/security/PrivateKey;)V
 			.descriptor	Ljavacard/security/PrivateKey;	1.2;
 
-		// 89
-		virtualMethodRef 1.22.3([BSS[BS)S;		// generateSecret([BSS[BS)S
 		// 90
-		staticMethodRef 0.16.5(BB)S;		// javacard/framework/Util.makeShort(BB)S
+		virtualMethodRef 1.22.3([BSS[BS)S;		// generateSecret([BSS[BS)S
 		// 91
-		staticMethodRef 0.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		staticMethodRef 0.16.5(BB)S;		// javacard/framework/Util.makeShort(BB)S
 		// 92
-		staticFieldRef byte[] IdentityCard/a;
+		staticMethodRef 0.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
 		// 93
-		classRef 1.17;		// javacard/security/ECKey
+		staticFieldRef byte[] IdentityCard/a;
 		// 94
-		staticFieldRef byte[] IdentityCard/b;
+		classRef 1.17;		// javacard/security/ECKey
 		// 95
-		staticFieldRef byte[] IdentityCard/n;
+		staticFieldRef byte[] IdentityCard/b;
 		// 96
-		staticFieldRef byte[] IdentityCard/G;
+		staticFieldRef byte[] IdentityCard/n;
 		// 97
-		staticFieldRef byte[] IdentityCard/p;
+		staticFieldRef byte[] IdentityCard/G;
 		// 98
-		classRef 1.19;		// javacard/security/ECPublicKey
+		staticFieldRef byte[] IdentityCard/p;
 		// 99
+		classRef 1.19;		// javacard/security/ECPublicKey
+		// 100
 		staticMethodRef IdentityCard/setDomainParameters(Ljavacard/security/ECKey;)V;
 			.descriptor	Ljavacard/security/ECKey;	1.17;
 
-		// 100
-		staticFieldRef byte[] IdentityCard/wCom;
 		// 101
-		classRef 1.18;		// javacard/security/ECPrivateKey
+		staticFieldRef byte[] IdentityCard/wCom;
 		// 102
-		staticFieldRef byte[] IdentityCard/privECKey;
+		classRef 1.18;		// javacard/security/ECPrivateKey
 		// 103
+		staticFieldRef byte[] IdentityCard/privECKey;
+		// 104
 		staticMethodRef 2.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
 			.descriptor	Ljavacardx/crypto/Cipher;	2.1;
 
-		// 104
+		// 105
 		virtualMethodRef 2.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
 			.descriptor	Ljavacard/security/Key;	1.0;
 
-		// 105
-		virtualMethodRef 2.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
 		// 106
-		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
+		virtualMethodRef 2.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
 		// 107
-		virtualMethodRef 0.10.15()S;		// getIncomingLength()S
+		virtualMethodRef 0.10.6()S;		// setIncomingAndReceive()S
 		// 108
-		staticMethodRef IdentityCard/clearChallenges()V;
+		virtualMethodRef 0.10.15()S;		// getIncomingLength()S
 		// 109
+		staticMethodRef IdentityCard/clearChallenges()V;
+		// 110
 		staticMethodRef IdentityCard/checkChallenge(Ljavacard/framework/APDU;)[B;
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-		// 110
-		staticMethodRef 0.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
 		// 111
-		virtualMethodRef 0.3.1()V;		// register()V
+		staticMethodRef 0.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
 		// 112
-		classRef IdentityCard;
+		virtualMethodRef 0.3.1()V;		// register()V
 		// 113
-		staticMethodRef IdentityCard/<init>()V;
+		classRef IdentityCard;
 		// 114
+		staticMethodRef IdentityCard/<init>()V;
+		// 115
 		staticMethodRef 1.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
 			.descriptor	Ljavacard/security/RandomData;	1.14;
 
-		// 115
+		// 116
 		virtualMethodRef 1.14.1([BSS)V;		// generateData([BSS)V
 	}
 
@@ -366,6 +370,7 @@
 			public static final byte GET_NUMBER_OF_LOGS = 86;		// B
 			public static final byte GET_NEXT_LOG = 87;		// B
 			public static final byte CLEAR_LOGS = 88;		// B
+			public static final byte GET_LP = 89;		// B
 			private static final byte IDENTITY_CARD_CLA = -128;		// B
 			private static final byte VALIDATE_PIN_INS = 34;		// B
 			private static final short SW_VERIFICATION_FAILED = 25344;		// S
@@ -427,7 +432,7 @@
 			.locals 3;
 
 				L0:	aload_0;
-					invokespecial 61;		// javacard/framework/Applet.<init>()V
+					invokespecial 62;		// javacard/framework/Applet.<init>()V
 					aload_0;
 					bspush 64;
 					newarray 11;
@@ -4038,11 +4043,11 @@
 					sconst_0;
 					putfield_b 12;		// boolean be/msec/smartcard/IdentityCard.isMWauthenticated
 					aload_0;
-					new 76;		// javacard/framework/OwnerPIN
+					new 77;		// javacard/framework/OwnerPIN
 					dup;
 					sconst_3;
 					sconst_4;
-					invokespecial 110;		// javacard/framework/OwnerPIN.<init>(BB)V
+					invokespecial 111;		// javacard/framework/OwnerPIN.<init>(BB)V
 					putfield_a 17;		// reference be/msec/smartcard/IdentityCard.pin
 					getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
 					sconst_4;
@@ -4065,7 +4070,7 @@
 					bastore;
 					sconst_0;
 					sconst_4;
-					invokevirtual 62;		// update([BSB)V
+					invokevirtual 63;		// update([BSB)V
 					sconst_0;
 					sstore_1;
 					bspush 64;
@@ -4078,19 +4083,19 @@
 					sconst_5;
 					sload_3;
 					sconst_0;
-					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
-					checkcast 0 75;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					invokestatic 65;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 76;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
 					putfield_a 18;		// reference be/msec/smartcard/IdentityCard.privKey
 					getfield_a_this 18;		// reference be/msec/smartcard/IdentityCard.privKey
 					getfield_a_this 0;		// reference be/msec/smartcard/IdentityCard.privExponent
 					sload_1;
 					sload_2;
-					invokeinterface 4 75 6;		// javacard/security/RSAPrivateKey
+					invokeinterface 4 76 6;		// javacard/security/RSAPrivateKey
 					getfield_a_this 18;		// reference be/msec/smartcard/IdentityCard.privKey
 					getfield_a_this 1;		// reference be/msec/smartcard/IdentityCard.privModulus
 					sload_1;
 					sload_2;
-					invokeinterface 4 75 7;		// javacard/security/RSAPrivateKey
+					invokeinterface 4 76 7;		// javacard/security/RSAPrivateKey
 					sconst_0;
 					sstore_1;
 					sspush 256;
@@ -4103,21 +4108,21 @@
 					sconst_4;
 					sload_3;
 					sconst_0;
-					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
-					checkcast 0 79;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					invokestatic 65;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 80;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
 					putfield_a 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
 					getfield_a_this 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
 					getfield_a_this 6;		// reference be/msec/smartcard/IdentityCard.pubExponentMW
 					sload_1;
 					sconst_3;
-					invokeinterface 4 79 6;		// javacard/security/RSAPublicKey
+					invokeinterface 4 80 6;		// javacard/security/RSAPublicKey
 					getfield_a_this 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
 					getfield_a_this 7;		// reference be/msec/smartcard/IdentityCard.pubModulusMW
 					sload_1;
 					sload_2;
-					invokeinterface 4 79 7;		// javacard/security/RSAPublicKey
+					invokeinterface 4 80 7;		// javacard/security/RSAPublicKey
 					aload_0;
-					invokevirtual 111;		// register()V
+					invokevirtual 112;		// register()V
 					return;
 		}
 
@@ -4125,8 +4130,8 @@
 			.stack 1;
 			.locals 0;
 
-				L0:	new 112;		// be/msec/smartcard/IdentityCard
-					invokespecial 113;		// be/msec/smartcard/IdentityCard.<init>()V
+				L0:	new 113;		// be/msec/smartcard/IdentityCard
+					invokespecial 114;		// be/msec/smartcard/IdentityCard.<init>()V
 					return;
 		}
 
@@ -4166,128 +4171,132 @@
 				L4:	aload_2;
 					sconst_1;
 					baload;
-					stableswitch L32 34 88 L5 L32 L6 L32 L7 L32 L8 L32 L32 L32 L32 L32 L32 L32 L32 L32 L32 L32 L10 L13 L14 L9 L15 L32 L32 L32 L32 L32 L32 L32 L19 L20 L12 L11 L21 L22 L23 L24 L16 L17 L32 L32 L32 L32 L32 L32 L18 L25 L26 L27 L32 L28 L29 L30 L31;
+					stableswitch L33 34 89 L5 L33 L6 L33 L7 L33 L8 L33 L33 L33 L33 L33 L33 L33 L33 L33 L33 L33 L10 L13 L14 L9 L15 L33 L33 L33 L33 L33 L33 L33 L19 L20 L12 L11 L21 L22 L23 L24 L16 L17 L33 L33 L33 L33 L33 L33 L18 L25 L26 L27 L33 L28 L30 L31 L32 L29;
 				L5:	aload_0;
 					aload_1;
 					invokespecial 34;		// be/msec/smartcard/IdentityCard.validatePIN(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L6:	aload_0;
 					aload_1;
 					invokespecial 35;		// be/msec/smartcard/IdentityCard.getSerial(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L7:	aload_0;
 					aload_1;
 					invokespecial 36;		// be/msec/smartcard/IdentityCard.getName(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L8:	aload_0;
 					aload_1;
 					invokevirtual 37;		// challenge(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L9:	aload_0;
 					aload_1;
 					invokespecial 38;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L10:	aload_0;
 					aload_1;
 					invokespecial 39;		// be/msec/smartcard/IdentityCard.getPublicECCertificate(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L11:	aload_0;
 					aload_1;
 					invokespecial 40;		// be/msec/smartcard/IdentityCard.test(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L12:	aload_0;
 					aconst_null;
 					putfield_a 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
-					goto_w L33;
+					goto_w L34;
 				L13:	aload_0;
 					sconst_0;
 					putfield_s 10;		// short be/msec/smartcard/IdentityCard.offset
-					goto_w L33;
+					goto_w L34;
 				L14:	aload_0;
 					aload_1;
 					invokespecial 41;		// be/msec/smartcard/IdentityCard.generateSessionKey(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L15:	aload_0;
 					aload_1;
 					invokespecial 42;		// be/msec/smartcard/IdentityCard.registerShopPseudonym(Ljavacard/framework/APDU;)V
-					goto_w L33;
+					goto_w L34;
 				L16:	aload_0;
 					aload_1;
 					sconst_1;
 					invokespecial 43;		// be/msec/smartcard/IdentityCard.registerShopCertificate(Ljavacard/framework/APDU;S)V
-					goto L33;
+					goto_w L34;
 				L17:	aload_0;
 					aload_1;
 					sconst_2;
 					invokespecial 43;		// be/msec/smartcard/IdentityCard.registerShopCertificate(Ljavacard/framework/APDU;S)V
-					goto L33;
+					goto L34;
 				L18:	aload_0;
 					aload_1;
 					sconst_3;
 					invokespecial 43;		// be/msec/smartcard/IdentityCard.registerShopCertificate(Ljavacard/framework/APDU;S)V
-					goto L33;
+					goto L34;
 				L19:	aload_0;
 					aload_1;
 					invokespecial 44;		// be/msec/smartcard/IdentityCard.registerShopName(Ljavacard/framework/APDU;)V
-					goto L33;
+					goto L34;
 				L20:	aload_0;
 					aload_1;
 					invokespecial 45;		// be/msec/smartcard/IdentityCard.registerShopComplete(Ljavacard/framework/APDU;)V
-					goto L33;
+					goto L34;
 				L21:	aload_0;
 					aload_1;
 					invokevirtual 37;		// challenge(Ljavacard/framework/APDU;)V
-					goto L33;
+					goto L34;
 				L22:	aload_0;
 					aload_1;
 					invokespecial 46;		// be/msec/smartcard/IdentityCard.challengeIsAccepted(Ljavacard/framework/APDU;)V
-					goto L33;
+					goto L34;
 				L23:	aload_0;
 					aload_1;
 					invokespecial 47;		// be/msec/smartcard/IdentityCard.getNextChallenge(Ljavacard/framework/APDU;)V
-					goto L33;
+					goto L34;
 				L24:	aload_0;
 					aload_1;
 					invokespecial 48;		// be/msec/smartcard/IdentityCard.getCurrentChallenge(Ljavacard/framework/APDU;)V
-					goto L33;
+					goto L34;
 				L25:	aload_0;
 					aload_1;
 					sconst_1;
 					invokespecial 49;		// be/msec/smartcard/IdentityCard.getPseudonymCertificate(Ljavacard/framework/APDU;S)V
-					goto L33;
+					goto L34;
 				L26:	aload_0;
 					aload_1;
 					sconst_2;
 					invokespecial 49;		// be/msec/smartcard/IdentityCard.getPseudonymCertificate(Ljavacard/framework/APDU;S)V
-					goto L33;
+					goto L34;
 				L27:	aload_0;
 					aload_1;
 					sconst_3;
 					invokespecial 49;		// be/msec/smartcard/IdentityCard.getPseudonymCertificate(Ljavacard/framework/APDU;S)V
-					goto L33;
+					goto L34;
 				L28:	aload_0;
 					aload_1;
 					invokespecial 50;		// be/msec/smartcard/IdentityCard.changeLP(Ljavacard/framework/APDU;)V
-					goto L33;
-				L29:	getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
-					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					goto L34;
+				L29:	aload_0;
+					aload_1;
+					invokespecial 51;		// be/msec/smartcard/IdentityCard.getLP(Ljavacard/framework/APDU;)V
+					goto L34;
+				L30:	getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
+					invokestatic 52;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
 					astore_3;
 					aload_0;
 					aload_1;
 					aload_3;
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
-					goto L33;
-				L30:	aload_0;
-					aload_1;
-					invokespecial 53;		// be/msec/smartcard/IdentityCard.getNextLog(Ljavacard/framework/APDU;)V
-					goto L33;
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					goto L34;
 				L31:	aload_0;
 					aload_1;
-					invokespecial 54;		// be/msec/smartcard/IdentityCard.clearLogs(Ljavacard/framework/APDU;)V
-					goto L33;
-				L32:	sspush 27904;
+					invokespecial 54;		// be/msec/smartcard/IdentityCard.getNextLog(Ljavacard/framework/APDU;)V
+					goto L34;
+				L32:	aload_0;
+					aload_1;
+					invokespecial 55;		// be/msec/smartcard/IdentityCard.clearLogs(Ljavacard/framework/APDU;)V
+					goto L34;
+				L33:	sspush 27904;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
-				L33:	return;
+				L34:	return;
 		}
 
 		.method private clearLogs(Ljavacard/framework/APDU;)V {
@@ -4314,7 +4323,7 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 55;		// be/msec/smartcard/IdentityCard.checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V
+					invokespecial 56;		// be/msec/smartcard/IdentityCard.checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V
 					getfield_s_this 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
 					ifne L2;
 				L1:	return;
@@ -4332,16 +4341,16 @@
 					aload_3;
 					sconst_0;
 					bspush 30;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload_3;
-					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
 					astore 4;
 					aload_0;
 					aload_1;
 					aload 4;
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
 					aload_0;
 					dup;
 					getfield_s 15;		// short be/msec/smartcard/IdentityCard.numberOfLogs
@@ -4359,11 +4368,11 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 58;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_0;
 					aload_2;
-					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					invokespecial 60;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
 					astore_3;
 					aload_3;
 					sconst_0;
@@ -4371,7 +4380,7 @@
 					aload_3;
 					sconst_1;
 					baload;
-					invokestatic 60;		// be/msec/smartcard/IdentityCard.bytesToShort(BB)S
+					invokestatic 61;		// be/msec/smartcard/IdentityCard.bytesToShort(BB)S
 					sstore 4;
 					sconst_2;
 					newarray 11;
@@ -4381,7 +4390,7 @@
 					aload 5;
 					sconst_0;
 					sconst_2;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 5;
 					sconst_0;
@@ -4389,7 +4398,7 @@
 					aload 5;
 					sconst_1;
 					baload;
-					invokestatic 60;		// be/msec/smartcard/IdentityCard.bytesToShort(BB)S
+					invokestatic 61;		// be/msec/smartcard/IdentityCard.bytesToShort(BB)S
 					sstore 6;
 					sload 6;
 					sload 4;
@@ -4406,14 +4415,14 @@
 					sconst_0;
 					sconst_1;
 					bastore;
-					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
 				L2:	sload 6;
 					sload 4;
 					sadd;
 					sstore 6;
 					sload 6;
-					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					invokestatic 52;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
 					astore 8;
 					aload 8;
 					sconst_0;
@@ -4422,7 +4431,7 @@
 					sspush 439;
 					sadd;
 					sconst_2;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					bspush 26;
 					newarray 11;
@@ -4432,14 +4441,14 @@
 					aload 9;
 					sconst_0;
 					bspush 26;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload 9;
 					sload 4;
-					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					invokestatic 52;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
 					aload 8;
-					invokespecial 63;		// be/msec/smartcard/IdentityCard.log([B[B[B)V
+					invokespecial 64;		// be/msec/smartcard/IdentityCard.log([B[B[B)V
 					aload_0;
 					aconst_null;
 					putfield_a 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
@@ -4451,8 +4460,8 @@
 					aload_0;
 					sconst_1;
 					newarray 11;
-					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
 					return;
 		}
 
@@ -4469,7 +4478,7 @@
 					getfield_a_this 16;		// reference be/msec/smartcard/IdentityCard.logs
 					sload 4;
 					bspush 26;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_2;
 					sconst_0;
@@ -4478,7 +4487,7 @@
 					bspush 26;
 					sadd;
 					sconst_2;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_3;
 					sconst_0;
@@ -4487,7 +4496,7 @@
 					bspush 28;
 					sadd;
 					sconst_2;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					dup;
@@ -4513,22 +4522,22 @@
 					putfield_a 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
 					aload_0;
 					aload_1;
-					invokespecial 58;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
 					astore_3;
 					aload_0;
 					aload_3;
-					invokespecial 65;		// be/msec/smartcard/IdentityCard.selectShopEntry([B)Z
+					invokespecial 66;		// be/msec/smartcard/IdentityCard.selectShopEntry([B)Z
 					pop;
 					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
 					bspush 26;
 					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
 					sconst_0;
 					sspush 413;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
-					invokespecial 66;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey512([B)[B
+					invokespecial 67;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey512([B)[B
 					astore 4;
 					aload_0;
 					sspush 512;
@@ -4539,7 +4548,7 @@
 					getfield_a_this 22;		// reference be/msec/smartcard/IdentityCard.selectedPseudoCertificate
 					sconst_0;
 					sspush 512;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sspush 200;
 					newarray 11;
@@ -4549,18 +4558,18 @@
 					aload 5;
 					sconst_0;
 					sspush 200;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload_1;
 					aload 5;
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
 				L2:	sload_2;
 					sconst_2;
 					if_scmpne L4;
 				L3:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					pop;
 					sspush 200;
 					newarray 11;
@@ -4570,18 +4579,18 @@
 					aload_3;
 					sconst_0;
 					sspush 200;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload_1;
 					aload_3;
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
 				L4:	sload_2;
 					sconst_3;
 					if_scmpne L6;
 				L5:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					pop;
 					bspush 112;
 					newarray 11;
@@ -4591,12 +4600,12 @@
 					aload_3;
 					sconst_0;
 					bspush 112;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload_1;
 					aload_3;
-					invokespecial 52;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
+					invokespecial 53;		// be/msec/smartcard/IdentityCard.sendBytesNotEncrypted(Ljavacard/framework/APDU;[B)V
 				L6:	return;
 		}
 
@@ -4607,18 +4616,51 @@
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
 				L0:	aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload_2;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload_2;
 					sconst_0;
 					aload_2;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private getLP(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	0.10;
+
+				L0:	aload_0;
+					aload_1;
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					astore_2;
+					aload_0;
+					aload_2;
+					invokespecial 66;		// be/msec/smartcard/IdentityCard.selectShopEntry([B)Z
+					ifne L2;
+				L1:	sspush 25480;
+					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	sconst_2;
+					newarray 11;
+					astore_3;
+					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
+					sspush 439;
+					aload_3;
+					sconst_0;
+					sconst_2;
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					aload_1;
+					aload_3;
+					invokespecial 72;		// be/msec/smartcard/IdentityCard.SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V
 					return;
 		}
 
@@ -4639,11 +4681,11 @@
 					aload_3;
 					sconst_0;
 					bspush 59;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload_3;
-					invokespecial 71;		// be/msec/smartcard/IdentityCard.removeNullBytes([B)[B
+					invokespecial 73;		// be/msec/smartcard/IdentityCard.removeNullBytes([B)[B
 					astore 4;
 					aload_1;
 					arraylength;
@@ -4656,7 +4698,7 @@
 					sconst_0;
 					aload_1;
 					arraylength;
-					invokestatic 72;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					invokestatic 74;		// javacard/framework/Util.arrayCompare([BS[BSS)B
 					ifne L4;
 				L3:	aload_0;
 					sload_2;
@@ -4670,7 +4712,7 @@
 					getfield_a_this 20;		// reference be/msec/smartcard/IdentityCard.selectedShopEntry
 					sconst_0;
 					sspush 500;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sconst_1;
 					sreturn;
@@ -4693,18 +4735,18 @@
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
 				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
-					invokevirtual 73;		// isValidated()Z
+					invokevirtual 75;		// isValidated()Z
 					ifne L2;
 				L1:	sspush 25345;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 					goto L3;
 				L2:	aload_0;
 					aload_1;
-					invokespecial 55;		// be/msec/smartcard/IdentityCard.checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V
+					invokespecial 56;		// be/msec/smartcard/IdentityCard.checkChallengeWithoutBuffer(Ljavacard/framework/APDU;)V
 					aload_0;
 					aload_1;
 					getfield_a_this 8;		// reference be/msec/smartcard/IdentityCard.serial
-					invokespecial 74;		// be/msec/smartcard/IdentityCard.SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V
+					invokespecial 72;		// be/msec/smartcard/IdentityCard.SendAndEncryptWithSessionKey(Ljavacard/framework/APDU;[B)V
 				L3:	return;
 		}
 
@@ -4727,7 +4769,7 @@
 					getfield_b_this 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
 					bastore;
 					sconst_2;
-					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
 					return;
 		}
 
@@ -4739,7 +4781,7 @@
 
 				L0:	aload_0;
 					sconst_2;
-					invokespecial 78;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
+					invokespecial 79;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
 					astore_2;
 					aload_0;
 					aload_2;
@@ -4756,7 +4798,7 @@
 					aload_2;
 					aload_2;
 					arraylength;
-					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
 					return;
 		}
 
@@ -4768,7 +4810,7 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					astore_2;
 					getfield_a_this 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
 					sconst_0;
@@ -4776,7 +4818,7 @@
 					sconst_0;
 					aload_2;
 					arraylength;
-					invokestatic 72;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					invokestatic 74;		// javacard/framework/Util.arrayCompare([BS[BSS)B
 					ifne L2;
 				L1:	aload_0;
 					sconst_1;
@@ -4786,7 +4828,7 @@
 					invokespecial 47;		// be/msec/smartcard/IdentityCard.getNextChallenge(Ljavacard/framework/APDU;)V
 					goto L3;
 				L2:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
-					invokevirtual 80;		// reset()V
+					invokevirtual 81;		// reset()V
 					sspush 25598;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 				L3:	return;
@@ -4804,11 +4846,11 @@
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 				L2:	aload_0;
 					aload_1;
-					invokespecial 81;		// be/msec/smartcard/IdentityCard.receiveBytesEncryptedByMW(Ljavacard/framework/APDU;)[B
+					invokespecial 82;		// be/msec/smartcard/IdentityCard.receiveBytesEncryptedByMW(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_0;
 					aload_2;
-					invokespecial 71;		// be/msec/smartcard/IdentityCard.removeNullBytes([B)[B
+					invokespecial 73;		// be/msec/smartcard/IdentityCard.removeNullBytes([B)[B
 					astore_3;
 					aload_3;
 					arraylength;
@@ -4818,7 +4860,7 @@
 					aload_3;
 					sconst_0;
 					sconst_4;
-					invokevirtual 82;		// check([BSB)Z
+					invokevirtual 83;		// check([BSB)Z
 					ifne L6;
 				L4:	sspush 25344;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
@@ -4835,24 +4877,24 @@
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
 				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
-					invokevirtual 73;		// isValidated()Z
+					invokevirtual 75;		// isValidated()Z
 					ifne L2;
 				L1:	sspush 25345;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 					goto L3;
 				L2:	aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					getfield_a_this 9;		// reference be/msec/smartcard/IdentityCard.name
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					getfield_a_this 9;		// reference be/msec/smartcard/IdentityCard.name
 					sconst_0;
 					getfield_a_this 9;		// reference be/msec/smartcard/IdentityCard.name
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 				L3:	return;
 		}
 
@@ -4865,14 +4907,14 @@
 				L0:	aload_0;
 					aload_0;
 					bspush 64;
-					invokespecial 78;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
+					invokespecial 79;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
 					putfield_a 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
 					aload_0;
 					aload_1;
 					getfield_a_this 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
 					getfield_a_this 25;		// reference be/msec/smartcard/IdentityCard.initChallenge
 					arraylength;
-					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
 					return;
 		}
 
@@ -4882,25 +4924,25 @@
 
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
-				L0:	getstatic_a 83;		// reference be/msec/smartcard/IdentityCard.pubECKeyCertificate
+				L0:	getstatic_a 84;		// reference be/msec/smartcard/IdentityCard.pubECKeyCertificate
 					arraylength;
 					sstore_2;
 					sload_2;
-					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					invokestatic 52;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
 					astore_3;
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload_3;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload_3;
 					sconst_0;
 					aload_3;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					return;
 		}
 
@@ -4911,7 +4953,7 @@
 			.descriptor	Ljavacard/framework/APDU;	0.10;
 
 				L0:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
-					invokevirtual 73;		// isValidated()Z
+					invokevirtual 75;		// isValidated()Z
 					ifne L2;
 				L1:	sspush 25345;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
@@ -4920,7 +4962,7 @@
 					invokevirtual 31;		// getBuffer()[B
 					astore_2;
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_2;
 					sconst_2;
@@ -4931,21 +4973,21 @@
 					sload_3;
 					newarray 11;
 					astore 4;
-					getstatic_a 83;		// reference be/msec/smartcard/IdentityCard.pubECKeyCertificate
+					getstatic_a 84;		// reference be/msec/smartcard/IdentityCard.pubECKeyCertificate
 					getfield_s_this 10;		// short be/msec/smartcard/IdentityCard.offset
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_1;
 					sload_3;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					aload_0;
 					dup;
 					getfield_s 10;		// short be/msec/smartcard/IdentityCard.offset
@@ -4963,35 +5005,35 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 58;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
+					invokespecial 59;		// be/msec/smartcard/IdentityCard.receiveBytesAndCheckChallenge(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_2;
-					invokestatic 84;		// be/msec/smartcard/IdentityCard.getSessionKey([B)[B
+					invokestatic 85;		// be/msec/smartcard/IdentityCard.getSessionKey([B)[B
 					astore_3;
 					aload_0;
 					bspush 15;
 					sspush 128;
 					sconst_0;
-					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
-					checkcast 0 85;		// T_CLASSORINTERFACE javacard/security/AESKey
+					invokestatic 65;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 86;		// T_CLASSORINTERFACE javacard/security/AESKey
 					putfield_a 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
 					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
 					aload_3;
 					sconst_0;
-					invokeinterface 3 85 4;		// javacard/security/AESKey
+					invokeinterface 3 86 4;		// javacard/security/AESKey
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload_3;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload_3;
 					sconst_0;
 					aload_3;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					return;
 		}
 
@@ -5001,11 +5043,11 @@
 
 				L0:	sconst_1;
 					sconst_0;
-					invokestatic 86;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
+					invokestatic 87;		// javacard/security/KeyAgreement.getInstance(BZ)Ljavacard/security/KeyAgreement;
 					astore_1;
 					aload_1;
-					invokestatic 87;		// be/msec/smartcard/IdentityCard.getCommonKeyPrivate()Ljavacard/security/ECPrivateKey;
-					invokevirtual 88;		// init(Ljavacard/security/PrivateKey;)V
+					invokestatic 88;		// be/msec/smartcard/IdentityCard.getCommonKeyPrivate()Ljavacard/security/ECPrivateKey;
+					invokevirtual 89;		// init(Ljavacard/security/PrivateKey;)V
 					aload_0;
 					astore_2;
 					aload_0;
@@ -5020,7 +5062,7 @@
 					sload_3;
 					aload 4;
 					sconst_0;
-					invokevirtual 89;		// generateSecret([BSS[BS)S
+					invokevirtual 90;		// generateSecret([BSS[BS)S
 					sstore 5;
 					sload 5;
 					newarray 11;
@@ -5030,7 +5072,7 @@
 					aload 6;
 					sconst_0;
 					sload 5;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 6;
 					areturn;
@@ -5042,7 +5084,7 @@
 
 				L0:	sload_0;
 					sload_1;
-					invokestatic 90;		// javacard/framework/Util.makeShort(BB)S
+					invokestatic 91;		// javacard/framework/Util.makeShort(BB)S
 					sreturn;
 		}
 
@@ -5056,7 +5098,7 @@
 					aload_1;
 					sconst_0;
 					sload_0;
-					invokestatic 91;		// javacard/framework/Util.setShort([BSS)S
+					invokestatic 92;		// javacard/framework/Util.setShort([BSS)S
 					pop;
 					aload_1;
 					areturn;
@@ -5069,38 +5111,38 @@
 			.descriptor	Ljavacard/security/ECKey;	1.17;
 
 				L0:	aload_0;
-					getstatic_a 92;		// reference be/msec/smartcard/IdentityCard.a
+					getstatic_a 93;		// reference be/msec/smartcard/IdentityCard.a
 					sconst_0;
-					getstatic_a 92;		// reference be/msec/smartcard/IdentityCard.a
+					getstatic_a 93;		// reference be/msec/smartcard/IdentityCard.a
 					arraylength;
-					invokeinterface 4 93 3;		// javacard/security/ECKey
+					invokeinterface 4 94 3;		// javacard/security/ECKey
 					aload_0;
-					getstatic_a 94;		// reference be/msec/smartcard/IdentityCard.b
+					getstatic_a 95;		// reference be/msec/smartcard/IdentityCard.b
 					sconst_0;
-					getstatic_a 94;		// reference be/msec/smartcard/IdentityCard.b
+					getstatic_a 95;		// reference be/msec/smartcard/IdentityCard.b
 					arraylength;
-					invokeinterface 4 93 4;		// javacard/security/ECKey
+					invokeinterface 4 94 4;		// javacard/security/ECKey
 					aload_0;
-					getstatic_a 95;		// reference be/msec/smartcard/IdentityCard.n
+					getstatic_a 96;		// reference be/msec/smartcard/IdentityCard.n
 					sconst_0;
-					getstatic_a 95;		// reference be/msec/smartcard/IdentityCard.n
+					getstatic_a 96;		// reference be/msec/smartcard/IdentityCard.n
 					arraylength;
-					invokeinterface 4 93 6;		// javacard/security/ECKey
+					invokeinterface 4 94 6;		// javacard/security/ECKey
 					aload_0;
 					sconst_1;
-					invokeinterface 2 93 7;		// javacard/security/ECKey
+					invokeinterface 2 94 7;		// javacard/security/ECKey
 					aload_0;
-					getstatic_a 96;		// reference be/msec/smartcard/IdentityCard.G
+					getstatic_a 97;		// reference be/msec/smartcard/IdentityCard.G
 					sconst_0;
-					getstatic_a 96;		// reference be/msec/smartcard/IdentityCard.G
+					getstatic_a 97;		// reference be/msec/smartcard/IdentityCard.G
 					arraylength;
-					invokeinterface 4 93 5;		// javacard/security/ECKey
+					invokeinterface 4 94 5;		// javacard/security/ECKey
 					aload_0;
-					getstatic_a 97;		// reference be/msec/smartcard/IdentityCard.p
+					getstatic_a 98;		// reference be/msec/smartcard/IdentityCard.p
 					sconst_0;
-					getstatic_a 97;		// reference be/msec/smartcard/IdentityCard.p
+					getstatic_a 98;		// reference be/msec/smartcard/IdentityCard.p
 					arraylength;
-					invokeinterface 4 93 0;		// javacard/security/ECKey
+					invokeinterface 4 94 0;		// javacard/security/ECKey
 					return;
 		}
 
@@ -5113,17 +5155,17 @@
 				L0:	bspush 11;
 					sspush 192;
 					sconst_0;
-					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
-					checkcast 0 98;		// T_CLASSORINTERFACE javacard/security/ECPublicKey
+					invokestatic 65;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 99;		// T_CLASSORINTERFACE javacard/security/ECPublicKey
 					astore_0;
 					aload_0;
-					invokestatic 99;		// be/msec/smartcard/IdentityCard.setDomainParameters(Ljavacard/security/ECKey;)V
+					invokestatic 100;		// be/msec/smartcard/IdentityCard.setDomainParameters(Ljavacard/security/ECKey;)V
 					aload_0;
-					getstatic_a 100;		// reference be/msec/smartcard/IdentityCard.wCom
+					getstatic_a 101;		// reference be/msec/smartcard/IdentityCard.wCom
 					sconst_0;
-					getstatic_a 100;		// reference be/msec/smartcard/IdentityCard.wCom
+					getstatic_a 101;		// reference be/msec/smartcard/IdentityCard.wCom
 					arraylength;
-					invokeinterface 4 98 18;		// javacard/security/ECPublicKey
+					invokeinterface 4 99 18;		// javacard/security/ECPublicKey
 					aload_0;
 					areturn;
 		}
@@ -5137,17 +5179,17 @@
 				L0:	bspush 12;
 					sspush 192;
 					sconst_0;
-					invokestatic 64;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
-					checkcast 0 101;		// T_CLASSORINTERFACE javacard/security/ECPrivateKey
+					invokestatic 65;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 102;		// T_CLASSORINTERFACE javacard/security/ECPrivateKey
 					astore_0;
 					aload_0;
-					getstatic_a 102;		// reference be/msec/smartcard/IdentityCard.privECKey
+					getstatic_a 103;		// reference be/msec/smartcard/IdentityCard.privECKey
 					sconst_0;
-					getstatic_a 102;		// reference be/msec/smartcard/IdentityCard.privECKey
+					getstatic_a 103;		// reference be/msec/smartcard/IdentityCard.privECKey
 					arraylength;
-					invokeinterface 4 101 18;		// javacard/security/ECPrivateKey
+					invokeinterface 4 102 18;		// javacard/security/ECPrivateKey
 					aload_0;
-					invokestatic 99;		// be/msec/smartcard/IdentityCard.setDomainParameters(Ljavacard/security/ECKey;)V
+					invokestatic 100;		// be/msec/smartcard/IdentityCard.setDomainParameters(Ljavacard/security/ECKey;)V
 					aload_0;
 					areturn;
 		}
@@ -5179,7 +5221,7 @@
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 4;
 					areturn;
@@ -5193,12 +5235,12 @@
 
 				L0:	bspush 10;
 					sconst_0;
-					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					invokestatic 104;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
 					astore 4;
 					aload 4;
 					getfield_a_this 19;		// reference be/msec/smartcard/IdentityCard.pubKeyMiddleware
 					sconst_2;
-					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					invokevirtual 105;		// init(Ljavacard/security/Key;B)V
 					sspush 256;
 					newarray 11;
 					astore 5;
@@ -5211,7 +5253,7 @@
 					sconst_0;
 					aload_2;
 					arraylength;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 4;
 					aload_2;
@@ -5220,21 +5262,21 @@
 					arraylength;
 					aload 5;
 					sconst_0;
-					invokevirtual 105;		// doFinal([BSS[BS)S
+					invokevirtual 106;		// doFinal([BSS[BS)S
 					pop;
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload 5;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload 5;
 					sconst_0;
 					aload 5;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					return;
 		}
 
@@ -5248,10 +5290,10 @@
 					invokevirtual 31;		// getBuffer()[B
 					astore_2;
 					aload_1;
-					invokevirtual 106;		// setIncomingAndReceive()S
+					invokevirtual 107;		// setIncomingAndReceive()S
 					pop;
 					aload_1;
-					invokevirtual 107;		// getIncomingLength()S
+					invokevirtual 108;		// getIncomingLength()S
 					sstore_3;
 					sload_3;
 					newarray 11;
@@ -5261,16 +5303,16 @@
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					bspush 10;
 					sconst_0;
-					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					invokestatic 104;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
 					astore 5;
 					aload 5;
 					getfield_a_this 18;		// reference be/msec/smartcard/IdentityCard.privKey
 					sconst_1;
-					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					invokevirtual 105;		// init(Ljavacard/security/Key;B)V
 					sspush 256;
 					newarray 11;
 					astore 6;
@@ -5280,7 +5322,7 @@
 					sload_3;
 					aload 6;
 					sconst_0;
-					invokevirtual 105;		// doFinal([BSS[BS)S
+					invokevirtual 106;		// doFinal([BSS[BS)S
 					sstore 7;
 					sload 7;
 					newarray 11;
@@ -5290,7 +5332,7 @@
 					aload 8;
 					sconst_0;
 					sload 7;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 6;
 					areturn;
@@ -5306,10 +5348,10 @@
 					invokevirtual 31;		// getBuffer()[B
 					astore_2;
 					aload_1;
-					invokevirtual 106;		// setIncomingAndReceive()S
+					invokevirtual 107;		// setIncomingAndReceive()S
 					pop;
 					aload_1;
-					invokevirtual 107;		// getIncomingLength()S
+					invokevirtual 108;		// getIncomingLength()S
 					sstore_3;
 					sload_3;
 					newarray 11;
@@ -5319,7 +5361,7 @@
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 4;
 					areturn;
@@ -5335,7 +5377,7 @@
 					invokevirtual 31;		// getBuffer()[B
 					astore_2;
 					aload_1;
-					invokevirtual 106;		// setIncomingAndReceive()S
+					invokevirtual 107;		// setIncomingAndReceive()S
 					pop;
 					aload_2;
 					sconst_2;
@@ -5352,10 +5394,10 @@
 					getfield_b_this 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
 					if_scmpne L3;
 				L2:	aload_0;
-					invokespecial 108;		// be/msec/smartcard/IdentityCard.clearChallenges()V
+					invokespecial 109;		// be/msec/smartcard/IdentityCard.clearChallenges()V
 					goto L4;
 				L3:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
-					invokevirtual 80;		// reset()V
+					invokevirtual 81;		// reset()V
 					sspush 25598;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 				L4:	return;
@@ -5371,7 +5413,7 @@
 					invokevirtual 31;		// getBuffer()[B
 					astore_2;
 					aload_1;
-					invokevirtual 106;		// setIncomingAndReceive()S
+					invokevirtual 107;		// setIncomingAndReceive()S
 					pop;
 					aload_2;
 					sconst_2;
@@ -5388,11 +5430,11 @@
 					getfield_b_this 24;		// byte be/msec/smartcard/IdentityCard.challengeP2
 					if_scmpne L3;
 				L2:	aload_0;
-					invokespecial 108;		// be/msec/smartcard/IdentityCard.clearChallenges()V
+					invokespecial 109;		// be/msec/smartcard/IdentityCard.clearChallenges()V
 					aload_2;
 					areturn;
 				L3:	getfield_a_this 17;		// reference be/msec/smartcard/IdentityCard.pin
-					invokevirtual 80;		// reset()V
+					invokevirtual 81;		// reset()V
 					sspush 25598;
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 					aconst_null;
@@ -5407,10 +5449,10 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 109;		// be/msec/smartcard/IdentityCard.checkChallenge(Ljavacard/framework/APDU;)[B
+					invokespecial 110;		// be/msec/smartcard/IdentityCard.checkChallenge(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_1;
-					invokevirtual 107;		// getIncomingLength()S
+					invokevirtual 108;		// getIncomingLength()S
 					sstore_3;
 					sload_3;
 					newarray 11;
@@ -5420,7 +5462,7 @@
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload 4;
 					areturn;
@@ -5432,7 +5474,7 @@
 
 				L0:	aload_0;
 					sconst_2;
-					invokespecial 78;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
+					invokespecial 79;		// be/msec/smartcard/IdentityCard.getRandomByteArray(S)[B
 					astore_1;
 					aload_0;
 					aload_1;
@@ -5455,14 +5497,14 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_0;
 					aload_1;
 					aload_2;
 					aload_2;
 					arraylength;
-					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
 					return;
 		}
 
@@ -5486,24 +5528,24 @@
 					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
 					sconst_0;
 					bspush 26;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					getfield_a_this 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
 					sconst_0;
 					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
 					bspush 26;
 					sspush 413;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sconst_0;
-					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					invokestatic 52;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
 					astore_2;
 					aload_2;
 					sconst_0;
 					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
 					sspush 439;
 					sconst_2;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
 					sconst_0;
@@ -5511,7 +5553,7 @@
 					sspush 441;
 					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
 					arraylength;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					goto_w L3;
 				L2:	getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
@@ -5524,7 +5566,7 @@
 					aload_2;
 					sconst_0;
 					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
@@ -5537,14 +5579,14 @@
 					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
 					sconst_0;
 					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
 					sconst_0;
 					getfield_a_this 21;		// reference be/msec/smartcard/IdentityCard.shopEntries
 					getfield_s_this 13;		// short be/msec/smartcard/IdentityCard.shopEntryOffset
 					bspush 26;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					getfield_a_this 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
 					sconst_0;
@@ -5553,10 +5595,10 @@
 					bspush 26;
 					sadd;
 					sspush 413;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sconst_0;
-					invokestatic 51;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
+					invokestatic 52;		// be/msec/smartcard/IdentityCard.shortToByteArray(S)[B
 					astore_3;
 					aload_3;
 					sconst_0;
@@ -5565,7 +5607,7 @@
 					sspush 439;
 					sadd;
 					sconst_2;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
 					sconst_0;
@@ -5575,7 +5617,7 @@
 					sadd;
 					getfield_a_this 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
 					arraylength;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					dup;
@@ -5595,7 +5637,7 @@
 				L0:	aload_0;
 					aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					putfield_a 28;		// reference be/msec/smartcard/IdentityCard.shopNameTemp
 					return;
 		}
@@ -5608,7 +5650,7 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					astore_3;
 					sload_2;
 					sconst_1;
@@ -5622,7 +5664,7 @@
 					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
 					sconst_0;
 					sspush 200;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					goto L6;
 				L2:	sload_2;
@@ -5633,7 +5675,7 @@
 					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
 					sspush 200;
 					sspush 200;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					goto L6;
 				L4:	sload_2;
@@ -5644,11 +5686,11 @@
 					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
 					sspush 400;
 					bspush 112;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					getfield_a_this 29;		// reference be/msec/smartcard/IdentityCard.encryptedCertificateTemp
-					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					invokespecial 60;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
 					astore 4;
 					aload_0;
 					sspush 413;
@@ -5659,7 +5701,7 @@
 					getfield_a_this 27;		// reference be/msec/smartcard/IdentityCard.certificateTemp
 					sconst_0;
 					sspush 413;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 				L6:	return;
 		}
@@ -5672,11 +5714,11 @@
 
 				L0:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_0;
 					aload_2;
-					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					invokespecial 60;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
 					astore_3;
 					aload_0;
 					bspush 26;
@@ -5687,13 +5729,13 @@
 					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
 					sconst_0;
 					bspush 26;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload_1;
 					getfield_a_this 26;		// reference be/msec/smartcard/IdentityCard.pseudonymTemp
 					bspush 26;
-					invokespecial 77;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
+					invokespecial 78;		// be/msec/smartcard/IdentityCard.sendBytesEncryptedForMW(Ljavacard/framework/APDU;[BS)V
 					return;
 		}
 
@@ -5709,21 +5751,21 @@
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 				L2:	aload_0;
 					aload_2;
-					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
 					astore_3;
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload_3;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload_3;
 					sconst_0;
 					aload_3;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					return;
 		}
 
@@ -5739,25 +5781,25 @@
 					invokestatic 33;		// javacard/framework/ISOException.throwIt(S)V
 				L2:	aload_0;
 					aload_1;
-					invokespecial 67;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
+					invokespecial 68;		// be/msec/smartcard/IdentityCard.receiveBytes(Ljavacard/framework/APDU;)[B
 					astore_2;
 					aload_0;
 					aload_2;
-					invokespecial 57;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
+					invokespecial 58;		// be/msec/smartcard/IdentityCard.encryptWithSessionKey([B)[B
 					astore_3;
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload_3;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload_3;
 					sconst_0;
 					aload_3;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					return;
 		}
 
@@ -5775,7 +5817,7 @@
 					invokevirtual 31;		// getBuffer()[B
 					astore_2;
 					aload_1;
-					invokevirtual 106;		// setIncomingAndReceive()S
+					invokevirtual 107;		// setIncomingAndReceive()S
 					sstore_3;
 					sload_3;
 					newarray 11;
@@ -5785,25 +5827,25 @@
 					aload 4;
 					sconst_0;
 					sload_3;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					aload_0;
 					aload 4;
-					invokespecial 59;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
+					invokespecial 60;		// be/msec/smartcard/IdentityCard.decryptWithSessionKey([B)[B
 					astore 5;
 					aload_1;
-					invokevirtual 68;		// setOutgoing()S
+					invokevirtual 69;		// setOutgoing()S
 					pop;
 					aload_1;
 					aload 5;
 					arraylength;
-					invokevirtual 69;		// setOutgoingLength(S)V
+					invokevirtual 70;		// setOutgoingLength(S)V
 					aload_1;
 					aload 5;
 					sconst_0;
 					aload 5;
 					arraylength;
-					invokevirtual 70;		// sendBytesLong([BSS)V
+					invokevirtual 71;		// sendBytesLong([BSS)V
 					return;
 		}
 
@@ -5813,12 +5855,12 @@
 
 				L0:	bspush 13;
 					sconst_0;
-					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					invokestatic 104;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
 					astore_2;
 					aload_2;
 					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
 					sconst_2;
-					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					invokevirtual 105;		// init(Ljavacard/security/Key;B)V
 					sspush 128;
 					newarray 11;
 					astore_3;
@@ -5828,7 +5870,7 @@
 					sconst_0;
 					aload_1;
 					arraylength;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sspush 128;
 					newarray 11;
@@ -5839,7 +5881,7 @@
 					sspush 128;
 					aload 4;
 					sconst_0;
-					invokevirtual 105;		// doFinal([BSS[BS)S
+					invokevirtual 106;		// doFinal([BSS[BS)S
 					pop;
 					aload 4;
 					areturn;
@@ -5851,12 +5893,12 @@
 
 				L0:	bspush 13;
 					sconst_0;
-					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					invokestatic 104;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
 					astore_2;
 					aload_2;
 					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
 					sconst_2;
-					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					invokevirtual 105;		// init(Ljavacard/security/Key;B)V
 					sspush 512;
 					newarray 11;
 					astore_3;
@@ -5866,7 +5908,7 @@
 					sconst_0;
 					aload_1;
 					arraylength;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sspush 512;
 					newarray 11;
@@ -5877,7 +5919,7 @@
 					sspush 512;
 					aload 4;
 					sconst_0;
-					invokevirtual 105;		// doFinal([BSS[BS)S
+					invokevirtual 106;		// doFinal([BSS[BS)S
 					pop;
 					aload 4;
 					areturn;
@@ -5889,12 +5931,12 @@
 
 				L0:	bspush 13;
 					sconst_0;
-					invokestatic 103;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					invokestatic 104;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
 					astore_2;
 					aload_2;
 					getfield_a_this 11;		// reference be/msec/smartcard/IdentityCard.sessionKey
 					sconst_1;
-					invokevirtual 104;		// init(Ljavacard/security/Key;B)V
+					invokevirtual 105;		// init(Ljavacard/security/Key;B)V
 					sspush 512;
 					newarray 11;
 					astore_3;
@@ -5904,7 +5946,7 @@
 					sconst_0;
 					aload_1;
 					arraylength;
-					invokestatic 56;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					invokestatic 57;		// javacard/framework/Util.arrayCopy([BS[BSS)S
 					pop;
 					sspush 512;
 					newarray 11;
@@ -5915,7 +5957,7 @@
 					sspush 512;
 					aload 4;
 					sconst_0;
-					invokevirtual 105;		// doFinal([BSS[BS)S
+					invokevirtual 106;		// doFinal([BSS[BS)S
 					pop;
 					aload 4;
 					areturn;
@@ -5929,13 +5971,13 @@
 					newarray 11;
 					astore_2;
 					sconst_1;
-					invokestatic 114;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					invokestatic 115;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
 					astore_3;
 					aload_3;
 					aload_2;
 					sconst_0;
 					sload_1;
-					invokevirtual 115;		// generateData([BSS)V
+					invokevirtual 116;		// generateData([BSS)V
 					aload_2;
 					areturn;
 		}

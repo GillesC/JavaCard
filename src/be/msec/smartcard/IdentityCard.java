@@ -590,10 +590,13 @@ public class IdentityCard extends Applet {
 	
 	private void getLP(APDU apdu) {
 		byte[] shopName = receiveBytesAndCheckChallenge(apdu);
-		selectShopEntry(shopName);
+		if(!selectShopEntry(shopName)){
+			ISOException.throwIt((short) 0x6388);
+		}
 		// location of lp: 439
 		byte[] lp = new byte[2];
-		Util.arrayCopy(selectedShopEntry, (short) 0, lp, (short) 0, (short) 2);
+		Util.arrayCopy(selectedShopEntry, (short) 439, lp, (short) 0, (short) 2);
+		//sendBytesNotEncrypted(apdu, lp);
 		SendAndEncryptWithSessionKey(apdu, lp);
 	}
 
